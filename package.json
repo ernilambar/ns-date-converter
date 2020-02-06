@@ -1,7 +1,7 @@
 {
   "name": "ns-date-converter",
   "version": "1.0.0",
-  "description": "NS Date Converter ====",
+  "description": "NS Date Converter",
   "main": "index.js",
   "scripts": {
     "build": "wp-scripts build",
