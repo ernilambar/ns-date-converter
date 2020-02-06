@@ -26,6 +26,7 @@ define( 'NS_DATE_CONVERTER_LIB_DIR', NS_DATE_CONVERTER_PLUGIN_DIR . 'lib/' );
 
 require_once NS_DATE_CONVERTER_LIB_DIR . 'nepali_calendar.php';
 require_once NS_DATE_CONVERTER_INC_DIR . 'helper-functions.php';
+require_once NS_DATE_CONVERTER_INC_DIR . 'api.php';
 
 function ns_date_converter_shortcode_callback( $atts ) {
 
