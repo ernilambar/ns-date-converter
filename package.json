@@ -1,0 +1,23 @@
+{
+  "name": "ns-date-converter",
+  "version": "1.0.0",
+  "description": "NS Date Converter ====",
+  "main": "index.js",
+  "scripts": {
+      "start": "webpack --mode development",
+      "build": "webpack --mode production"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/ernilambar/ns-date-converter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "homepage": "https://gitlab.com/ernilambar/ns-date-converter#readme",
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
