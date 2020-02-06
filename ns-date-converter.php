@@ -29,12 +29,31 @@ require_once NS_DATE_CONVERTER_INC_DIR . 'helper-functions.php';
 require_once NS_DATE_CONVERTER_INC_DIR . 'api.php';
 
 function ns_date_converter_shortcode_callback( $atts ) {
-
-	ob_start();
-	include NS_DATE_CONVERTER_VIEWS_DIR . 'date-converter-shortcode.php';
-	$output = ob_get_contents();
-	ob_end_clean();
-	return $output;
-
+	?>
+	<div id="ns-date-converter-app"></div>
+	<?php
 }
 add_shortcode( 'ns_date_converter', 'ns_date_converter_shortcode_callback' );
+
+function weather_info_enqueue() {
+	wp_enqueue_script(
+		'ns-date-converter-main',
+		NS_DATE_CONVERTER_PLUGIN_URI . '/build/index.js',
+		['wp-element'],
+		time(),
+		true
+	);
+
+	wp_localize_script(
+		'ns-date-converter-main',
+		'nsDateConverter',
+		array (
+			'url'     => home_url( '/' ),
+			'api_url' => home_url( '/wp-json/nsdc/v1/' ),
+			'nonce'   => wp_create_nonce( 'wp_rest' ),
+		)
+	);
+
+}
+
+add_action( 'wp_enqueue_scripts', 'weather_info_enqueue' );
