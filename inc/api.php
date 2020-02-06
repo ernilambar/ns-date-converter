@@ -30,38 +30,46 @@ function ns_date_converter_api_callback( WP_REST_Request $request ) {
 	// 	return new WP_Error( 'invalid_target', esc_html( 'Invalid target' ), array('status' => 404) );
 	// }
 
-	$output = array(
-		'type' => esc_html( $to ),
-	);
+	$output = array();
 
 	$cal = new Nepali_Calendar();
 
 	list( $year, $month, $day ) = explode( '-', $date );
 
-	var_dump( $year );
-	var_dump( $month );
-	var_dump( $day );
-
 	switch ( $to ) {
 		case 'en':
 			if ( crossCheck( $year, $month, $day ) ) {
 				$new_date = $cal->nep_to_eng( $year, $month, $day );
+				$output['year']       = $new_date['year'];
+				$output['month']      = $new_date['month'];
+				$output['month_text'] = $new_date['emonth'];
+				$output['day']        = $new_date['date'];
+				$output['day_text']   = $new_date['day'];
+				$output['day_number'] = $new_date['num_day'];
+				$output['type']       = 'en';
 			}
-			$output['year']       = $new_date['year'];
-			$output['month']      = $new_date['month'];
-			$output['month_text'] = $new_date['emonth'];
-			$output['day']        = $new_date['date'];
-			$output['day_text']   = $new_date['day'];
-			$output['day_number'] = $new_date['num_day'];
+			break;
+
+		case 'np':
+			if ( crossCheck( $year, $month, $day ) ) {
+				$new_date = $cal->eng_to_nep( $year, $month, $day );
+				$output['year']       = $new_date['year'];
+				$output['month']      = $new_date['month'];
+				$output['month_text'] = $new_date['nmonth'];
+				$output['day']        = $new_date['date'];
+				$output['day_text']   = $new_date['day'];
+				$output['day_number'] = $new_date['num_day'];
+				$output['type']       = 'np';
+			}
 			break;
 
 		default:
-			# code...
 			break;
 	}
 
-				// print_r( $output );
-
+	if ( empty( $output ) ) {
+		return new WP_Error( 'invalid_date', esc_html( 'Invalid date submitted.' ), array('status' => 404) );
+	}
 
 	$response = new WP_REST_Response( $output );
 
