@@ -361,7 +361,10 @@ function (_React$Component) {
       mode: '',
       year: '',
       month: '',
-      day: ''
+      day: '',
+      options_year: '',
+      options_month: '',
+      options_day: ''
     };
     return _this;
   }
@@ -373,14 +376,20 @@ function (_React$Component) {
         mode: 'ennp',
         year: nsDateConverter.today_year,
         month: nsDateConverter.today_month,
-        day: nsDateConverter.today_day
+        day: nsDateConverter.today_day,
+        options_year: years_en,
+        options_month: months_en,
+        options_day: days_en
       });
     }
   }, {
     key: "onModeChange",
     value: function onModeChange(e) {
       this.setState({
-        mode: e.target.value
+        mode: e.target.value,
+        options_year: 'ennp' === e.target.value ? years_en : years_np,
+        options_month: 'ennp' === e.target.value ? months_en : months_np,
+        options_day: 'ennp' === e.target.value ? days_en : days_np
       });
     }
   }, {
@@ -404,12 +413,12 @@ function (_React$Component) {
         checked: this.state.mode === "ennp",
         onChange: this.onModeChange.bind(this)
       }), "English to Nepali"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
-        className: "row-nepali"
+        className: "row-date"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
         name: "year_np",
         value: this.state.year,
         onChange: this.onChangeYear
-      }, Object.entries(years_np).map(function (item, key) {
+      }, Object.entries(this.state.options_year).map(function (item, key) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
           key: item[1],
           value: item[0]
@@ -418,7 +427,7 @@ function (_React$Component) {
         name: "month_np",
         value: this.state.month,
         onChange: this.onChangeYear
-      }, Object.entries(months_np).map(function (item, key) {
+      }, Object.entries(this.state.options_month).map(function (item, key) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
           key: item[1],
           value: item[0]
@@ -427,30 +436,7 @@ function (_React$Component) {
         name: "day_np",
         value: this.state.day,
         onChange: this.onChangeYear
-      }, Object.entries(days_np).map(function (item, key) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
-          key: item[1],
-          value: item[0]
-        }, item[1]);
-      }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
-        className: "row-english"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
-        name: "year_en"
-      }, Object.entries(years_en).map(function (item, key) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
-          key: item[1],
-          value: item[0]
-        }, item[1]);
-      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
-        name: "month_en"
-      }, Object.entries(months_en).map(function (item, key) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
-          key: item[1],
-          value: item[0]
-        }, item[1]);
-      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
-        name: "day_en"
-      }, Object.entries(days_en).map(function (item, key) {
+      }, Object.entries(this.state.options_day).map(function (item, key) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
           key: item[1],
           value: item[0]

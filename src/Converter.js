@@ -13,6 +13,9 @@ class Converter extends React.Component {
 			year: '',
 			month: '',
 			day: '',
+			options_year: '',
+			options_month: '',
+			options_day: '',
 		}
 
 	}
@@ -23,20 +26,23 @@ class Converter extends React.Component {
 			year: nsDateConverter.today_year,
 			month: nsDateConverter.today_month,
 			day: nsDateConverter.today_day,
+			options_year: years_en,
+			options_month: months_en,
+			options_day: days_en,
 		});
 	}
 
 	onModeChange(e) {
 	  this.setState({
-	    mode: e.target.value
+	    mode: e.target.value,
+	    options_year: ('ennp' === e.target.value ) ? years_en : years_np,
+	    options_month: ('ennp' === e.target.value ) ? months_en : months_np,
+	    options_day: ('ennp' === e.target.value ) ? days_en : days_np,
 	  });
 	};
 
 	onChangeYear(e) {
 	};
-
-
-
 
 	render() {
 		// console.log( typeof nsDateConverter.months );
@@ -48,36 +54,19 @@ class Converter extends React.Component {
 					<div>
 						<input type="radio" name="mode" value="npen" checked={this.state.mode === "npen"} onChange={this.onModeChange.bind(this)} />Nepali to English&nbsp;<input type="radio" name="mode" value="ennp" checked={this.state.mode === "ennp"} onChange={this.onModeChange.bind(this)} />English to Nepali
 					</div>
-					<div className="row-nepali">
+					<div className="row-date">
 						<select name="year_np" value={this.state.year} onChange={this.onChangeYear}>
-							{Object.entries(years_np).map((item, key) => {
+							{Object.entries(this.state.options_year).map((item, key) => {
 						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
 						    })}
 						</select>
 						<select name="month_np" value={this.state.month} onChange={this.onChangeYear}>
-							{Object.entries(months_np).map((item, key) => {
+							{Object.entries(this.state.options_month).map((item, key) => {
 						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
 						    })}
 						</select>
 						<select name="day_np" value={this.state.day} onChange={this.onChangeYear}>
-							{Object.entries(days_np).map((item, key) => {
-						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
-						    })}
-						</select>
-					</div>
-					<div className="row-english">
-						<select name="year_en">
-							{Object.entries(years_en).map((item, key) => {
-						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
-						    })}
-						</select>
-						<select name="month_en">
-							{Object.entries(months_en).map((item, key) => {
-						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
-						    })}
-						</select>
-						<select name="day_en">
-							{Object.entries(days_en).map((item, key) => {
+							{Object.entries(this.state.options_day).map((item, key) => {
 						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
 						    })}
 						</select>
