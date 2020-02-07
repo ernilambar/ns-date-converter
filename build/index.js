@@ -365,12 +365,16 @@ function (_React$Component) {
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5___default()(Converter).call(this, props));
     _this.state = {
       mode: '',
+      converted_date: '',
       year: '',
       month: '',
       day: '',
       options_year: '',
       options_month: '',
       options_day: '',
+      year_field: '',
+      month_field: '',
+      day_field: '',
       error: ''
     };
     return _this;
@@ -384,6 +388,9 @@ function (_React$Component) {
         year: nsDateConverter.today_year,
         month: nsDateConverter.today_month,
         day: nsDateConverter.today_day,
+        year_field: nsDateConverter.today_year,
+        month_field: nsDateConverter.today_month,
+        day_field: nsDateConverter.today_day,
         options_year: years_en,
         options_month: months_en,
         options_day: days_en
@@ -415,7 +422,10 @@ function (_React$Component) {
                 this.setState({
                   year: nsDateConverter.today_year,
                   month: nsDateConverter.today_month,
-                  day: nsDateConverter.today_day
+                  day: nsDateConverter.today_day,
+                  year_field: nsDateConverter.today_year,
+                  month_field: nsDateConverter.today_month,
+                  day_field: nsDateConverter.today_day
                 });
                 _context.next = 10;
                 break;
@@ -434,7 +444,10 @@ function (_React$Component) {
                 this.setState({
                   year: result.year,
                   month: result.month,
-                  day: result.day
+                  day: result.day,
+                  year_field: result.year,
+                  month_field: result.month,
+                  day_field: result.day
                 });
 
               case 10:
@@ -452,13 +465,20 @@ function (_React$Component) {
       return onModeChange;
     }()
   }, {
-    key: "onChangeYear",
-    value: function onChangeYear(e) {}
+    key: "onChangeSelectField",
+    value: function onChangeSelectField(e) {
+      var change = {};
+      change[e.target.name] = e.target.value;
+      this.setState(change);
+    }
   }, {
     key: "onFormSubmit",
     value: function onFormSubmit(e) {
       e.preventDefault();
-      console.log('submit handler');
+      var mode = 'ennp' === this.state.mode ? 'np' : 'en'; // console.log('On Submit');
+
+      var url = "".concat(nsDateConverter.api_url, "convert/").concat(mode, "?date=").concat(this.state.year_field, "-").concat(this.getPrefixedNumber(this.state.month_field), "-").concat(this.getPrefixedNumber(this.state.day_field));
+      console.log(url);
     }
   }, {
     key: "getPrefixedNumber",
@@ -471,43 +491,43 @@ function (_React$Component) {
       // console.log( typeof nsDateConverter.months );
       // console.log( months_en );
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("form", {
-        onSubmit: this.onFormSubmit
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("input", {
+        onSubmit: this.onFormSubmit.bind(this)
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("label", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("input", {
         type: "radio",
         name: "mode",
         value: "npen",
         checked: this.state.mode === "npen",
         onChange: this.onModeChange.bind(this)
-      }), "Nepali to English\xA0", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("input", {
+      }), "Nepali to English"), "\xA0", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("label", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("input", {
         type: "radio",
         name: "mode",
         value: "ennp",
         checked: this.state.mode === "ennp",
         onChange: this.onModeChange.bind(this)
-      }), "English to Nepali"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
+      }), "English to Nepali")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "row-date"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("select", {
-        name: "year_np",
-        value: this.state.year,
-        onChange: this.onChangeYear
+        name: "year_field",
+        value: this.state.year_field,
+        onChange: this.onChangeSelectField.bind(this)
       }, Object.entries(this.state.options_year).map(function (item, key) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("option", {
           key: item[1],
           value: item[0]
         }, item[1]);
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("select", {
-        name: "month_np",
-        value: this.state.month,
-        onChange: this.onChangeYear
+        name: "month_field",
+        value: this.state.month_field,
+        onChange: this.onChangeSelectField.bind(this)
       }, Object.entries(this.state.options_month).map(function (item, key) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("option", {
           key: item[1],
           value: item[0]
         }, item[1]);
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("select", {
-        name: "day_np",
-        value: this.state.day,
-        onChange: this.onChangeYear
+        name: "day_field",
+        value: this.state.day_field,
+        onChange: this.onChangeSelectField.bind(this)
       }, Object.entries(this.state.options_day).map(function (item, key) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("option", {
           key: item[1],
@@ -520,7 +540,7 @@ function (_React$Component) {
         className: "converter-error"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, this.state.error)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "date-output"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, this.state.year, " - ", this.state.month, " - ", this.state.day))));
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, "FROM > ", this.state.year, " - ", this.state.month, " - ", this.state.day), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, "TO > ", JSON.stringify(this.state.converted_date)))));
     }
   }]);
 
