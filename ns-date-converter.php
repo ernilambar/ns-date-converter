@@ -44,9 +44,9 @@ function weather_info_enqueue() {
 		true
 	);
 
-	$month = array();
+	$months = array();
 
-	$month['en'] = array(
+	$months['en'] = array(
 		'1'  => esc_html__( 'January' ),
 		'2'  => esc_html__( 'February' ),
 		'3'  => esc_html__( 'March' ),
@@ -60,7 +60,7 @@ function weather_info_enqueue() {
 		'11' => esc_html__( 'November' ),
 		'12' => esc_html__( 'December' ),
 	);
-	$month['np'] = array(
+	$months['np'] = array(
 		'1'  => esc_html__( 'Baisakh' ),
 		'2'  => esc_html__( 'Jeth' ),
 		'3'  => esc_html__( 'Ashar' ),
@@ -82,7 +82,8 @@ function weather_info_enqueue() {
 			'url'     => home_url( '/' ),
 			'api_url' => home_url( '/wp-json/nsdc/v1/' ),
 			'nonce'   => wp_create_nonce( 'wp_rest' ),
-			'month'   => $month,
+			'months_np'  => $months['np'],
+			'months_en'  => $months['en'],
 		)
 	);
 
