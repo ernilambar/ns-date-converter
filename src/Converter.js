@@ -9,14 +9,20 @@ class Converter extends React.Component {
 	constructor(props) {
 	  super(props);
 		this.state = {
-			mode: ''
+			mode: '',
+			year: '',
+			month: '',
+			day: '',
 		}
 
 	}
 
 	componentDidMount() {
 		this.setState({
-			mode: 'npen'
+			mode: 'ennp',
+			year: nsDateConverter.today_year,
+			month: nsDateConverter.today_month,
+			day: nsDateConverter.today_day,
 		});
 	}
 
@@ -25,6 +31,11 @@ class Converter extends React.Component {
 	    mode: e.target.value
 	  });
 	};
+
+	onChangeYear(e) {
+	};
+
+
 
 
 	render() {
@@ -38,17 +49,17 @@ class Converter extends React.Component {
 						<input type="radio" name="mode" value="npen" checked={this.state.mode === "npen"} onChange={this.onModeChange.bind(this)} />Nepali to English&nbsp;<input type="radio" name="mode" value="ennp" checked={this.state.mode === "ennp"} onChange={this.onModeChange.bind(this)} />English to Nepali
 					</div>
 					<div className="row-nepali">
-						<select name="year_np">
+						<select name="year_np" value={this.state.year} onChange={this.onChangeYear}>
 							{Object.entries(years_np).map((item, key) => {
 						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
 						    })}
 						</select>
-						<select name="month_np">
+						<select name="month_np" value={this.state.month} onChange={this.onChangeYear}>
 							{Object.entries(months_np).map((item, key) => {
 						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
 						    })}
 						</select>
-						<select name="day_np">
+						<select name="day_np" value={this.state.day} onChange={this.onChangeYear}>
 							{Object.entries(days_np).map((item, key) => {
 						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
 						    })}

@@ -115,15 +115,18 @@ function weather_info_enqueue() {
 		'ns-date-converter-main',
 		'nsDateConverter',
 		array (
-			'url'       => home_url( '/' ),
-			'api_url'   => home_url( '/wp-json/nsdc/v1/' ),
-			'nonce'     => wp_create_nonce( 'wp_rest' ),
-			'months_np' => $months_np,
-			'months_en' => $months_en,
-			'days_np'   => $days_np,
-			'days_en'   => $days_en,
-			'years_np'  => $years_np,
-			'years_en'  => $years_en,
+			'url'         => home_url( '/' ),
+			'api_url'     => home_url( '/wp-json/nsdc/v1/' ),
+			'nonce'       => wp_create_nonce( 'wp_rest' ),
+			'months_np'   => $months_np,
+			'months_en'   => $months_en,
+			'days_np'     => $days_np,
+			'days_en'     => $days_en,
+			'years_np'    => $years_np,
+			'years_en'    => $years_en,
+			'today_year'  => date('Y'),
+			'today_month' => date('m'),
+			'today_day'   => date('d'),
 		)
 	);
 
