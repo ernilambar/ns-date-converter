@@ -321,18 +321,24 @@ module.exports = _typeof;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "@babel/runtime/regenerator");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__);
+
+
 
 
 
@@ -349,14 +355,14 @@ var days_en = nsDateConverter.days_en;
 var Converter =
 /*#__PURE__*/
 function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(Converter, _React$Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default()(Converter, _React$Component);
 
   function Converter(props) {
     var _this;
 
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Converter);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default()(this, Converter);
 
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Converter).call(this, props));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5___default()(Converter).call(this, props));
     _this.state = {
       mode: '',
       year: '',
@@ -369,7 +375,7 @@ function (_React$Component) {
     return _this;
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Converter, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default()(Converter, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.setState({
@@ -384,64 +390,134 @@ function (_React$Component) {
     }
   }, {
     key: "onModeChange",
-    value: function onModeChange(e) {
-      this.setState({
-        mode: e.target.value,
-        options_year: 'ennp' === e.target.value ? years_en : years_np,
-        options_month: 'ennp' === e.target.value ? months_en : months_np,
-        options_day: 'ennp' === e.target.value ? days_en : days_np
-      });
-    }
+    value: function () {
+      var _onModeChange = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
+        var url, result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.setState({
+                  mode: e.target.value,
+                  options_year: 'ennp' === e.target.value ? years_en : years_np,
+                  options_month: 'ennp' === e.target.value ? months_en : months_np,
+                  options_day: 'ennp' === e.target.value ? days_en : days_np
+                });
+
+                if (!('ennp' === e.target.value)) {
+                  _context.next = 5;
+                  break;
+                }
+
+                this.setState({
+                  year: nsDateConverter.today_year,
+                  month: nsDateConverter.today_month,
+                  day: nsDateConverter.today_day
+                });
+                _context.next = 10;
+                break;
+
+              case 5:
+                url = "".concat(nsDateConverter.api_url, "convert/np?date=").concat(nsDateConverter.today_year, "-").concat(this.getPrefixedNumber(nsDateConverter.today_month), "-").concat(this.getPrefixedNumber(nsDateConverter.today_day)); // console.log( url );
+
+                _context.next = 8;
+                return fetch(url).then(function (response) {
+                  return response.json();
+                });
+
+              case 8:
+                result = _context.sent;
+                // console.log( result );
+                this.setState({
+                  year: result.year,
+                  month: result.month,
+                  day: result.day
+                });
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function onModeChange(_x) {
+        return _onModeChange.apply(this, arguments);
+      }
+
+      return onModeChange;
+    }()
   }, {
     key: "onChangeYear",
     value: function onChangeYear(e) {}
+  }, {
+    key: "onFormSubmit",
+    value: function onFormSubmit(e) {
+      e.preventDefault();
+      console.log('submit handler');
+    }
+  }, {
+    key: "getPrefixedNumber",
+    value: function getPrefixedNumber(num) {
+      return String(num).padStart(2, '0');
+    }
   }, {
     key: "render",
     value: function render() {
       // console.log( typeof nsDateConverter.months );
       // console.log( months_en );
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("form", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("input", {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("form", {
+        onSubmit: this.onFormSubmit
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("input", {
         type: "radio",
         name: "mode",
         value: "npen",
         checked: this.state.mode === "npen",
         onChange: this.onModeChange.bind(this)
-      }), "Nepali to English\xA0", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("input", {
+      }), "Nepali to English\xA0", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("input", {
         type: "radio",
         name: "mode",
         value: "ennp",
         checked: this.state.mode === "ennp",
         onChange: this.onModeChange.bind(this)
-      }), "English to Nepali"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+      }), "English to Nepali"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "row-date"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("select", {
         name: "year_np",
         value: this.state.year,
         onChange: this.onChangeYear
       }, Object.entries(this.state.options_year).map(function (item, key) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("option", {
           key: item[1],
           value: item[0]
         }, item[1]);
-      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("select", {
         name: "month_np",
         value: this.state.month,
         onChange: this.onChangeYear
       }, Object.entries(this.state.options_month).map(function (item, key) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("option", {
           key: item[1],
           value: item[0]
         }, item[1]);
-      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("select", {
         name: "day_np",
         value: this.state.day,
         onChange: this.onChangeYear
       }, Object.entries(this.state.options_day).map(function (item, key) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("option", {
           key: item[1],
           value: item[0]
         }, item[1]);
-      })))));
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("input", {
+        type: "submit",
+        value: "Convert"
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
+        className: "date-output"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, this.state.year, " - ", this.state.month, " - ", this.state.day))));
     }
   }]);
 

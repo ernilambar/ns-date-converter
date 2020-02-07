@@ -38,7 +38,7 @@ add_shortcode( 'ns_date_converter', 'ns_date_converter_shortcode_callback' );
 function weather_info_enqueue() {
 	wp_enqueue_script(
 		'ns-date-converter-main',
-		NS_DATE_CONVERTER_PLUGIN_URI . '/build/index.js',
+		NS_DATE_CONVERTER_PLUGIN_URI . 'build/index.js',
 		['wp-element'],
 		time(),
 		true
