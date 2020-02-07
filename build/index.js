@@ -339,8 +339,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var months_en = nsDateConverter.months_en;
 var months_np = nsDateConverter.months_np;
+var months_en = nsDateConverter.months_en;
+var days_np = nsDateConverter.days_np;
+var days_en = nsDateConverter.days_en;
 
 var Converter =
 /*#__PURE__*/
@@ -390,7 +392,9 @@ function (_React$Component) {
         value: "ennp",
         checked: this.state.mode === "ennp",
         onChange: this.onModeChange.bind(this)
-      }), "English to Nepali"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
+      }), "English to Nepali"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+        className: "row-nepali"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
         name: "month_np"
       }, Object.entries(months_np).map(function (item, key) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
@@ -398,8 +402,24 @@ function (_React$Component) {
           value: item[0]
         }, item[1]);
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
+        name: "day_np"
+      }, Object.entries(days_np).map(function (item, key) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
+          key: item[1],
+          value: item[0]
+        }, item[1]);
+      }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+        className: "row-english"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
         name: "month_en"
       }, Object.entries(months_en).map(function (item, key) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
+          key: item[1],
+          value: item[0]
+        }, item[1]);
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
+        name: "day_en"
+      }, Object.entries(days_en).map(function (item, key) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
           key: item[1],
           value: item[0]

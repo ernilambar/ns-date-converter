@@ -73,6 +73,22 @@ function weather_info_enqueue() {
 		'12' => esc_html__( 'Chaitra' ),
 	);
 
+	$days_np = array();
+	$day_max_np = 32;
+
+	for ($i = 1; $i <= $day_max_np; $i++) {
+		$days_np[ $i ] = $i;
+	}
+
+	$days_en = array();
+	$day_max_en = 31;
+
+	for ($i = 1; $i <= $day_max_en; $i++) {
+		$days_en[ $i ] = $i;
+	}
+
+
+
 	wp_localize_script(
 		'ns-date-converter-main',
 		'nsDateConverter',
@@ -82,6 +98,8 @@ function weather_info_enqueue() {
 			'nonce'     => wp_create_nonce( 'wp_rest' ),
 			'months_np' => $months_np,
 			'months_en' => $months_en,
+			'days_np'   => $days_np,
+			'days_en'   => $days_en,
 		)
 	);
 
