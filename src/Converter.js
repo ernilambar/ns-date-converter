@@ -16,6 +16,7 @@ class Converter extends React.Component {
 			options_year: '',
 			options_month: '',
 			options_day: '',
+			error: '',
 		}
 
 	}
@@ -58,7 +59,6 @@ class Converter extends React.Component {
 		  		month: result.month,
 		  		day: result.day,
 		  	})
-
 	  }
 	};
 
@@ -102,6 +102,9 @@ class Converter extends React.Component {
 						</select>
 						<input type="submit" value="Convert" />
 					</div>
+
+					{this.state.error && <div className="converter-error"><p>{this.state.error}</p></div>}
+
 					<div className="date-output">
 					<p>
 						{this.state.year} - {this.state.month} - {this.state.day}

@@ -370,7 +370,8 @@ function (_React$Component) {
       day: '',
       options_year: '',
       options_month: '',
-      options_day: ''
+      options_day: '',
+      error: ''
     };
     return _this;
   }
@@ -515,7 +516,9 @@ function (_React$Component) {
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("input", {
         type: "submit",
         value: "Convert"
-      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
+      })), this.state.error && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
+        className: "converter-error"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, this.state.error)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "date-output"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, this.state.year, " - ", this.state.month, " - ", this.state.day))));
     }
