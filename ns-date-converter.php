@@ -125,8 +125,8 @@ function weather_info_enqueue() {
 			'years_np'    => $years_np,
 			'years_en'    => $years_en,
 			'today_year'  => date('Y'),
-			'today_month' => date('m'),
-			'today_day'   => date('d'),
+			'today_month' => date('n'),
+			'today_day'   => date('j'),
 		)
 	);
 
