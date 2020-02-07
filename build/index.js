@@ -339,6 +339,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var years_np = nsDateConverter.years_np;
+var years_en = nsDateConverter.years_en;
 var months_np = nsDateConverter.months_np;
 var months_en = nsDateConverter.months_en;
 var days_np = nsDateConverter.days_np;
@@ -395,6 +397,13 @@ function (_React$Component) {
       }), "English to Nepali"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
         className: "row-nepali"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
+        name: "year_np"
+      }, Object.entries(years_np).map(function (item, key) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
+          key: item[1],
+          value: item[0]
+        }, item[1]);
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
         name: "month_np"
       }, Object.entries(months_np).map(function (item, key) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
@@ -411,6 +420,13 @@ function (_React$Component) {
       }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
         className: "row-english"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
+        name: "year_en"
+      }, Object.entries(years_en).map(function (item, key) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
+          key: item[1],
+          value: item[0]
+        }, item[1]);
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("select", {
         name: "month_en"
       }, Object.entries(months_en).map(function (item, key) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("option", {
