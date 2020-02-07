@@ -44,6 +44,7 @@ function weather_info_enqueue() {
 		true
 	);
 
+	// Months English.
 	$months_en = array(
 		'1'  => esc_html__( 'January' ),
 		'2'  => esc_html__( 'February' ),
@@ -58,6 +59,8 @@ function weather_info_enqueue() {
 		'11' => esc_html__( 'November' ),
 		'12' => esc_html__( 'December' ),
 	);
+
+	// Months Nepali.
 	$months_np = array(
 		'1'  => esc_html__( 'Baisakh' ),
 		'2'  => esc_html__( 'Jeth' ),
@@ -73,21 +76,40 @@ function weather_info_enqueue() {
 		'12' => esc_html__( 'Chaitra' ),
 	);
 
-	$days_np = array();
+	// Days Nepali.
+	$days_np    = array();
 	$day_max_np = 32;
 
 	for ($i = 1; $i <= $day_max_np; $i++) {
 		$days_np[ $i ] = $i;
 	}
 
-	$days_en = array();
+	// Days English.
+	$days_en    = array();
 	$day_max_en = 31;
 
 	for ($i = 1; $i <= $day_max_en; $i++) {
 		$days_en[ $i ] = $i;
 	}
 
+	// Years Nepali.
+	$years_np       = array();
+	$years_np_start = 2000;
+	$years_np_npd   = 2089;
 
+	for ($i = $years_np_start; $i <= $years_np_npd; $i++) {
+		$years_np[ $i ] = $i;
+	}
+
+
+	// Years English.
+	$years_en       = array();
+	$years_en_start = 1944;
+	$years_en_end   = 2033;
+
+	for ($i = $years_en_start; $i <= $years_en_end; $i++) {
+		$years_en[ $i ] = $i;
+	}
 
 	wp_localize_script(
 		'ns-date-converter-main',
@@ -100,6 +122,8 @@ function weather_info_enqueue() {
 			'months_en' => $months_en,
 			'days_np'   => $days_np,
 			'days_en'   => $days_en,
+			'years_np'  => $years_np,
+			'years_en'  => $years_en,
 		)
 	);
 
