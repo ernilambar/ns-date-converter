@@ -22,7 +22,7 @@ class Converter extends React.Component {
 
 	onModeChange(e) {
 	  this.setState({
-	    mode: item.target.value
+	    mode: e.target.value
 	  });
 	};
 
@@ -35,8 +35,7 @@ class Converter extends React.Component {
 			<div>
 				<form>
 					<div>
-					<input type="radio" name="mode" value="npen" checked={this.state.mode === "npen"} onChange={this.onModeChange.bind(this)} />Nepali to English<br />
-					<input type="radio" name="mode" value="ennp" checked={this.state.mode === "ennp"} onChange={this.onModeChange.bind(this)} />English to Nepali
+						<input type="radio" name="mode" value="npen" checked={this.state.mode === "npen"} onChange={this.onModeChange.bind(this)} />Nepali to English&nbsp;<input type="radio" name="mode" value="ennp" checked={this.state.mode === "ennp"} onChange={this.onModeChange.bind(this)} />English to Nepali
 					</div>
 					<div className="row-nepali">
 						<select name="year_np">

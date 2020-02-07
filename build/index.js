@@ -374,7 +374,7 @@ function (_React$Component) {
     key: "onModeChange",
     value: function onModeChange(e) {
       this.setState({
-        mode: item.target.value
+        mode: e.target.value
       });
     }
   }, {
@@ -388,7 +388,7 @@ function (_React$Component) {
         value: "npen",
         checked: this.state.mode === "npen",
         onChange: this.onModeChange.bind(this)
-      }), "Nepali to English", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("br", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("input", {
+      }), "Nepali to English\xA0", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("input", {
         type: "radio",
         name: "mode",
         value: "ennp",
