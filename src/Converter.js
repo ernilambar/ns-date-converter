@@ -81,13 +81,18 @@ class Converter extends React.Component {
 		this.setState(change)
 	};
 
-	onFormSubmit(e) {
+	async onFormSubmit(e) {
 		e.preventDefault();
 		const mode = ( 'ennp' === this.state.mode ) ? 'np' :'en';
 		// console.log('On Submit');
 		let url = `${nsDateConverter.api_url}convert/${mode}?date=${this.state.year_field}-${this.getPrefixedNumber(this.state.month_field)}-${this.getPrefixedNumber(this.state.day_field)}`;
-		console.log( url );
-
+		// console.log( url );
+		const result = await fetch(url).then(function(response) {
+		   return response.json();
+		});
+		this.setState({
+			converted_date: result
+		})
 	};
 
 	getPrefixedNumber( num ) {
@@ -97,6 +102,7 @@ class Converter extends React.Component {
 	render() {
 		// console.log( typeof nsDateConverter.months );
 		// console.log( months_en );
+		const {year, month_text, day } = this.state.converted_date;
 
 		return(
 			<div>
@@ -126,12 +132,12 @@ class Converter extends React.Component {
 					{this.state.error && <div className="converter-error"><p>{this.state.error}</p></div>}
 
 					<div className="date-output">
-					<p>
-						FROM > {this.state.year} - {this.state.month} - {this.state.day}
-					</p>
-					<p>
-						TO > {JSON.stringify(this.state.converted_date)}
-					</p>
+					{
+						year &&
+						<p>
+							{day} {month_text}, {year}<br/>
+						</p>
+					}
 					</div>
 				</form>
 			</div>

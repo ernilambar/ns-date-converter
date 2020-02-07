@@ -473,13 +473,45 @@ function (_React$Component) {
     }
   }, {
     key: "onFormSubmit",
-    value: function onFormSubmit(e) {
-      e.preventDefault();
-      var mode = 'ennp' === this.state.mode ? 'np' : 'en'; // console.log('On Submit');
+    value: function () {
+      var _onFormSubmit = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(e) {
+        var mode, url, result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                e.preventDefault();
+                mode = 'ennp' === this.state.mode ? 'np' : 'en'; // console.log('On Submit');
 
-      var url = "".concat(nsDateConverter.api_url, "convert/").concat(mode, "?date=").concat(this.state.year_field, "-").concat(this.getPrefixedNumber(this.state.month_field), "-").concat(this.getPrefixedNumber(this.state.day_field));
-      console.log(url);
-    }
+                url = "".concat(nsDateConverter.api_url, "convert/").concat(mode, "?date=").concat(this.state.year_field, "-").concat(this.getPrefixedNumber(this.state.month_field), "-").concat(this.getPrefixedNumber(this.state.day_field)); // console.log( url );
+
+                _context2.next = 5;
+                return fetch(url).then(function (response) {
+                  return response.json();
+                });
+
+              case 5:
+                result = _context2.sent;
+                this.setState({
+                  converted_date: result
+                });
+
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function onFormSubmit(_x2) {
+        return _onFormSubmit.apply(this, arguments);
+      }
+
+      return onFormSubmit;
+    }()
   }, {
     key: "getPrefixedNumber",
     value: function getPrefixedNumber(num) {
@@ -490,6 +522,10 @@ function (_React$Component) {
     value: function render() {
       // console.log( typeof nsDateConverter.months );
       // console.log( months_en );
+      var _this$state$converted = this.state.converted_date,
+          year = _this$state$converted.year,
+          month_text = _this$state$converted.month_text,
+          day = _this$state$converted.day;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("form", {
         onSubmit: this.onFormSubmit.bind(this)
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("label", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("input", {
@@ -540,7 +576,7 @@ function (_React$Component) {
         className: "converter-error"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, this.state.error)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "date-output"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, "FROM > ", this.state.year, " - ", this.state.month, " - ", this.state.day), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, "TO > ", JSON.stringify(this.state.converted_date)))));
+      }, year && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, day, " ", month_text, ", ", year, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("br", null)))));
     }
   }]);
 
