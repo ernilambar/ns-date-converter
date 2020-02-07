@@ -44,6 +44,37 @@ function weather_info_enqueue() {
 		true
 	);
 
+	$month = array();
+
+	$month['en'] = array(
+		'1'  => esc_html__( 'January' ),
+		'2'  => esc_html__( 'February' ),
+		'3'  => esc_html__( 'March' ),
+		'4'  => esc_html__( 'April' ),
+		'5'  => esc_html__( 'May' ),
+		'6'  => esc_html__( 'June' ),
+		'7'  => esc_html__( 'July' ),
+		'8'  => esc_html__( 'August' ),
+		'9'  => esc_html__( 'September' ),
+		'10' => esc_html__( 'October' ),
+		'11' => esc_html__( 'November' ),
+		'12' => esc_html__( 'December' ),
+	);
+	$month['np'] = array(
+		'1'  => esc_html__( 'Baisakh' ),
+		'2'  => esc_html__( 'Jeth' ),
+		'3'  => esc_html__( 'Ashar' ),
+		'4'  => esc_html__( 'Shrawan' ),
+		'5'  => esc_html__( 'Bhadra' ),
+		'6'  => esc_html__( 'Asoj' ),
+		'7'  => esc_html__( 'Kartik' ),
+		'8'  => esc_html__( 'Mangsir' ),
+		'9'  => esc_html__( 'Poush' ),
+		'10' => esc_html__( 'Magh' ),
+		'11' => esc_html__( 'Falgun' ),
+		'12' => esc_html__( 'Chaitra' ),
+	);
+
 	wp_localize_script(
 		'ns-date-converter-main',
 		'nsDateConverter',
@@ -51,6 +82,7 @@ function weather_info_enqueue() {
 			'url'     => home_url( '/' ),
 			'api_url' => home_url( '/wp-json/nsdc/v1/' ),
 			'nonce'   => wp_create_nonce( 'wp_rest' ),
+			'month'   => $month,
 		)
 	);
 
