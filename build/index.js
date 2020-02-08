@@ -413,9 +413,12 @@ function (_React$Component) {
                   options_month: 'ennp' === e.target.value ? months_en : months_np,
                   options_day: 'ennp' === e.target.value ? days_en : days_np
                 });
+                this.setState({
+                  converted_date: ''
+                });
 
                 if (!('ennp' === e.target.value)) {
-                  _context.next = 5;
+                  _context.next = 6;
                   break;
                 }
 
@@ -427,18 +430,18 @@ function (_React$Component) {
                   month_field: nsDateConverter.today_month,
                   day_field: nsDateConverter.today_day
                 });
-                _context.next = 10;
+                _context.next = 11;
                 break;
 
-              case 5:
+              case 6:
                 url = "".concat(nsDateConverter.api_url, "convert/np?date=").concat(nsDateConverter.today_year, "-").concat(this.getPrefixedNumber(nsDateConverter.today_month), "-").concat(this.getPrefixedNumber(nsDateConverter.today_day)); // console.log( url );
 
-                _context.next = 8;
+                _context.next = 9;
                 return fetch(url).then(function (response) {
                   return response.json();
                 });
 
-              case 8:
+              case 9:
                 result = _context.sent;
                 // console.log( result );
                 this.setState({
@@ -450,7 +453,7 @@ function (_React$Component) {
                   day_field: result.day
                 });
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
@@ -470,6 +473,9 @@ function (_React$Component) {
       var change = {};
       change[e.target.name] = e.target.value;
       this.setState(change);
+      this.setState({
+        converted_date: ''
+      });
     }
   }, {
     key: "onFormSubmit",
@@ -576,7 +582,11 @@ function (_React$Component) {
         className: "converter-error"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, this.state.error)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "date-output"
-      }, year && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", null, day, " ", month_text, ", ", year, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("br", null)))));
+      }, year && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("p", {
+        className: "date-source"
+      }, this.state.year_field, " - ", this.state.month_field, " - ", this.state.day_field), year && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("h3", {
+        className: "date-target"
+      }, day, " ", month_text, ", ", year, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("br", null)))));
     }
   }]);
 

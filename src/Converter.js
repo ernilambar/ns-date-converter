@@ -47,6 +47,9 @@ class Converter extends React.Component {
 	    options_month: ('ennp' === e.target.value ) ? months_en : months_np,
 	    options_day: ('ennp' === e.target.value ) ? days_en : days_np,
 	  });
+  	this.setState({
+  		converted_date: ''
+  	})
 
 	  if ('ennp' === e.target.value) {
 	  	this.setState({
@@ -79,6 +82,9 @@ class Converter extends React.Component {
 		let change = {}
 		change[e.target.name] = e.target.value
 		this.setState(change)
+		this.setState({
+			converted_date: ''
+		})
 	};
 
 	async onFormSubmit(e) {
@@ -134,9 +140,15 @@ class Converter extends React.Component {
 					<div className="date-output">
 					{
 						year &&
-						<p>
-							{day} {month_text}, {year}<br/>
+						<p className="date-source">
+							{this.state.year_field} - {this.state.month_field} - {this.state.day_field}
 						</p>
+					}
+					{
+						year &&
+						<h3 className="date-target">
+							{day} {month_text}, {year}<br/>
+						</h3>
 					}
 					</div>
 				</form>
