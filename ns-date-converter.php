@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NS Date Converter
  * Plugin URI:
- * Description: Provides shortcode for Nepali-English date converter. Shortcode: [ns_date_converter].
+ * Description: Provides shortcode for Nepali to English date converter. Shortcode: [ns_date_converter].
  * Version: 1.0
  * Author: Nilambar Sharma
  * Author URI: http://nilambar.net
