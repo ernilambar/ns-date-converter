@@ -9,6 +9,7 @@ module.exports = function( grunt ) {
 		'build/**',
 		'languages/**',
 		'inc/**',
+		'lib/**',
 		'readme.txt',
 		'<%= pkg.main_file %>'
 	];
