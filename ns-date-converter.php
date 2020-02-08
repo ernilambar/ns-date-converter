@@ -29,10 +29,15 @@ require_once NS_DATE_CONVERTER_INC_DIR . 'helper-functions.php';
 require_once NS_DATE_CONVERTER_INC_DIR . 'api.php';
 
 function ns_date_converter_shortcode_callback( $atts ) {
+	ob_start();
 	?>
 	<div id="ns-date-converter-app"></div>
 	<?php
+	$output = ob_get_contents();
+	ob_end_clean();
+	return $output;
 }
+
 add_shortcode( 'ns_date_converter', 'ns_date_converter_shortcode_callback' );
 
 function ns_date_converter_enqueue() {
