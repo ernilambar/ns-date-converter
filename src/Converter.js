@@ -48,7 +48,8 @@ class Converter extends React.Component {
 	    options_day: ('ennp' === e.target.value ) ? days_en : days_np,
 	  });
   	this.setState({
-  		converted_date: ''
+  		converted_date: '',
+  		error: ''
   	})
 
 	  if ('ennp' === e.target.value) {

@@ -14,3 +14,5 @@
       display: flex; }
       .ns-dc-form .row-date .date-dropdowns .field-dropdown {
         margin-right: 10px; }
+  .ns-dc-form .converter-error p {
+    color: #dd0000; }
