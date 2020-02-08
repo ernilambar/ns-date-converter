@@ -63,11 +63,9 @@ class Converter extends React.Component {
 	  	})
 	  } else {
 		  	let url = `${nsDateConverter.api_url}convert/np?date=${nsDateConverter.today_year}-${this.getPrefixedNumber(nsDateConverter.today_month)}-${this.getPrefixedNumber(nsDateConverter.today_day)}`;
-		  	// console.log( url );
 		  	const result = await fetch(url).then(function(response) {
 		  	   return response.json();
 		  	});
-		  	// console.log( result );
 		  	this.setState({
 		  		year: result.year,
 		  		month: result.month,
@@ -91,9 +89,7 @@ class Converter extends React.Component {
 	async onFormSubmit(e) {
 		e.preventDefault();
 		const mode = ( 'ennp' === this.state.mode ) ? 'np' :'en';
-		// console.log('On Submit');
 		let url = `${nsDateConverter.api_url}convert/${mode}?date=${this.state.year_field}-${this.getPrefixedNumber(this.state.month_field)}-${this.getPrefixedNumber(this.state.day_field)}`;
-		// console.log( url );
 		const result = await fetch(url).then(function(response) {
 		   return response.json();
 		});
@@ -115,8 +111,6 @@ class Converter extends React.Component {
 	}
 
 	render() {
-		// console.log( typeof nsDateConverter.months );
-		// console.log( months_en );
 		const {year, month_text, day } = this.state.converted_date;
 
 		return(
