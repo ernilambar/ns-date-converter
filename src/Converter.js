@@ -120,27 +120,37 @@ class Converter extends React.Component {
 
 		return(
 			<div>
-				<form onSubmit={this.onFormSubmit.bind(this)}>
-					<div>
-						<label><input type="radio" name="mode" value="npen" checked={this.state.mode === "npen"} onChange={this.onModeChange.bind(this)} />Nepali to English</label>&nbsp;<label><input type="radio" name="mode" value="ennp" checked={this.state.mode === "ennp"} onChange={this.onModeChange.bind(this)} />English to Nepali</label>
+				<form onSubmit={this.onFormSubmit.bind(this)} className="ns-dc-form">
+					<div className="row-radio">
+						<span className="radio-npen">
+							<label><input type="radio" name="mode" value="npen" checked={this.state.mode === "npen"} onChange={this.onModeChange.bind(this)} />Nepali to English</label>
+						</span>
+						<span className="radio-ennp">
+							<label><input type="radio" name="mode" value="ennp" checked={this.state.mode === "ennp"} onChange={this.onModeChange.bind(this)} />English to Nepali</label>
+						</span>
 					</div>
+
 					<div className="row-date">
-						<select name="year_field" value={this.state.year_field} onChange={this.onChangeSelectField.bind(this)}>
+						<div className="date-dropdowns">
+							<select name="year_field" value={this.state.year_field} onChange={this.onChangeSelectField.bind(this)}>
 							{Object.entries(this.state.options_year).map((item, key) => {
-						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
-						    })}
-						</select>
-						<select name="month_field" value={this.state.month_field} onChange={this.onChangeSelectField.bind(this)}>
+								return <option key={item[1]} value={item[0]}>{item[1]}</option>;
+							})}
+							</select>
+							<select name="month_field" value={this.state.month_field} onChange={this.onChangeSelectField.bind(this)}>
 							{Object.entries(this.state.options_month).map((item, key) => {
-						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
-						    })}
-						</select>
-						<select name="day_field" value={this.state.day_field} onChange={this.onChangeSelectField.bind(this)}>
+								return <option key={item[1]} value={item[0]}>{item[1]}</option>;
+							})}
+							</select>
+							<select name="day_field" value={this.state.day_field} onChange={this.onChangeSelectField.bind(this)}>
 							{Object.entries(this.state.options_day).map((item, key) => {
-						        return <option key={item[1]} value={item[0]}>{item[1]}</option>;
-						    })}
-						</select>
-						<input type="submit" value="Convert" />
+								return <option key={item[1]} value={item[0]}>{item[1]}</option>;
+							})}
+							</select>
+						</div>
+						<div className="date-convert-button">
+							<input type="submit" value="Convert" />
+						</div>
 					</div>
 
 					{this.state.error && <div className="converter-error"><p>{this.state.error}</p></div>}

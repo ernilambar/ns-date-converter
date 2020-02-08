@@ -35,7 +35,9 @@ function ns_date_converter_shortcode_callback( $atts ) {
 }
 add_shortcode( 'ns_date_converter', 'ns_date_converter_shortcode_callback' );
 
-function weather_info_enqueue() {
+function ns_date_converter_enqueue() {
+	wp_enqueue_style( 'ns-date-converter-style', NS_DATE_CONVERTER_PLUGIN_URI . 'css/style.css' );
+
 	wp_enqueue_script(
 		'ns-date-converter-main',
 		NS_DATE_CONVERTER_PLUGIN_URI . 'build/index.js',
@@ -132,4 +134,4 @@ function weather_info_enqueue() {
 
 }
 
-add_action( 'wp_enqueue_scripts', 'weather_info_enqueue' );
+add_action( 'wp_enqueue_scripts', 'ns_date_converter_enqueue' );
