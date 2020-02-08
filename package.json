@@ -2,7 +2,8 @@
   "name": "ns-date-converter",
   "version": "1.0.0",
   "description": "NS Date Converter",
-  "main": "index.js",
+  "main_file": "ns-date-converter.php",
+  "main": "Gruntfile.js",
   "scripts": {
     "scss": "node-sass --watch assets/scss -o assets/css",
     "build": "wp-scripts build",
