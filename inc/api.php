@@ -14,7 +14,7 @@ add_action( 'rest_api_init', function () {
 		'date' => array(
 			'required' => true,
 			'validate_callback' => function( $param, $request, $key ) {
-				return (bool)preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$param);
+				return (bool)preg_match("/\d{4}\-\d{2}-\d{2}/",$param);
 			}
 		),
 	),
