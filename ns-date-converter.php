@@ -36,7 +36,7 @@ function ns_date_converter_shortcode_callback( $atts ) {
 add_shortcode( 'ns_date_converter', 'ns_date_converter_shortcode_callback' );
 
 function ns_date_converter_enqueue() {
-	wp_enqueue_style( 'ns-date-converter-style', NS_DATE_CONVERTER_PLUGIN_URI . 'css/style.css' );
+	wp_enqueue_style( 'ns-date-converter-style', NS_DATE_CONVERTER_PLUGIN_URI . 'assets/css/style.css' );
 
 	wp_enqueue_script(
 		'ns-date-converter-main',

@@ -545,7 +545,7 @@ function (_React$Component) {
         className: "ns-dc-form"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "row-radio"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "radio-npen"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("label", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("input", {
         type: "radio",
@@ -553,7 +553,7 @@ function (_React$Component) {
         value: "npen",
         checked: this.state.mode === "npen",
         onChange: this.onModeChange.bind(this)
-      }), "Nepali to English")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", {
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", null, "Nepali to English"))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "radio-ennp"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("label", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("input", {
         type: "radio",
@@ -561,7 +561,7 @@ function (_React$Component) {
         value: "ennp",
         checked: this.state.mode === "ennp",
         onChange: this.onModeChange.bind(this)
-      }), "English to Nepali"))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", null, "English to Nepali")))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "row-date"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "date-dropdowns"
@@ -635,7 +635,7 @@ var _wp$element = wp.element,
     useState = _wp$element.useState;
 
 var NsDateConverter = function NsDateConverter() {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Converter__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Converter__WEBPACK_IMPORTED_MODULE_1__["default"], null);
 };
 
 render(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(NsDateConverter, null), document.getElementById('ns-date-converter-app'));

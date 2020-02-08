@@ -122,12 +122,12 @@ class Converter extends React.Component {
 			<div>
 				<form onSubmit={this.onFormSubmit.bind(this)} className="ns-dc-form">
 					<div className="row-radio">
-						<span className="radio-npen">
-							<label><input type="radio" name="mode" value="npen" checked={this.state.mode === "npen"} onChange={this.onModeChange.bind(this)} />Nepali to English</label>
-						</span>
-						<span className="radio-ennp">
-							<label><input type="radio" name="mode" value="ennp" checked={this.state.mode === "ennp"} onChange={this.onModeChange.bind(this)} />English to Nepali</label>
-						</span>
+						<div className="radio-npen">
+							<label><input type="radio" name="mode" value="npen" checked={this.state.mode === "npen"} onChange={this.onModeChange.bind(this)} /><span>Nepali to English</span></label>
+						</div>
+						<div className="radio-ennp">
+							<label><input type="radio" name="mode" value="ennp" checked={this.state.mode === "ennp"} onChange={this.onModeChange.bind(this)} /><span>English to Nepali</span></label>
+						</div>
 					</div>
 
 					<div className="row-date">

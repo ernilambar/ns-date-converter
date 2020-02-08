@@ -1,0 +1,9 @@
+.ns-dc-form {
+  padding: 10px 0; }
+  .ns-dc-form .row-radio {
+    display: flex;
+    margin-bottom: 15px; }
+    .ns-dc-form .row-radio span {
+      margin-left: 8px; }
+    .ns-dc-form .row-radio .radio-npen {
+      margin-right: 15px; }
