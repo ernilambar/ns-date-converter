@@ -96,9 +96,17 @@ class Converter extends React.Component {
 		const result = await fetch(url).then(function(response) {
 		   return response.json();
 		});
-		this.setState({
-			converted_date: result
-		})
+		if ( result.code ) {
+			this.setState({
+				converted_date: '',
+				error: result.message,
+			})
+
+		} else {
+			this.setState({
+				converted_date: result
+			})
+		}
 	};
 
 	getPrefixedNumber( num ) {
