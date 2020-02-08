@@ -132,21 +132,27 @@ class Converter extends React.Component {
 
 					<div className="row-date">
 						<div className="date-dropdowns">
-							<select name="year_field" value={this.state.year_field} onChange={this.onChangeSelectField.bind(this)}>
-							{Object.entries(this.state.options_year).map((item, key) => {
-								return <option key={item[1]} value={item[0]}>{item[1]}</option>;
-							})}
-							</select>
-							<select name="month_field" value={this.state.month_field} onChange={this.onChangeSelectField.bind(this)}>
-							{Object.entries(this.state.options_month).map((item, key) => {
-								return <option key={item[1]} value={item[0]}>{item[1]}</option>;
-							})}
-							</select>
-							<select name="day_field" value={this.state.day_field} onChange={this.onChangeSelectField.bind(this)}>
-							{Object.entries(this.state.options_day).map((item, key) => {
-								return <option key={item[1]} value={item[0]}>{item[1]}</option>;
-							})}
-							</select>
+							<div className="field-dropdown dropdown-year">
+								<select name="year_field" value={this.state.year_field} onChange={this.onChangeSelectField.bind(this)}>
+								{Object.entries(this.state.options_year).map((item, key) => {
+									return <option key={item[1]} value={item[0]}>{item[1]}</option>;
+								})}
+								</select>
+							</div>
+							<div className="field-dropdown dropdown-month">
+								<select name="month_field" value={this.state.month_field} onChange={this.onChangeSelectField.bind(this)}>
+								{Object.entries(this.state.options_month).map((item, key) => {
+									return <option key={item[1]} value={item[0]}>{item[1]}</option>;
+								})}
+								</select>
+							</div>
+							<div className="field-dropdown dropdown-day">
+								<select name="day_field" value={this.state.day_field} onChange={this.onChangeSelectField.bind(this)}>
+								{Object.entries(this.state.options_day).map((item, key) => {
+									return <option key={item[1]} value={item[0]}>{item[1]}</option>;
+								})}
+								</select>
+							</div>
 						</div>
 						<div className="date-convert-button">
 							<input type="submit" value="Convert" />
@@ -158,9 +164,9 @@ class Converter extends React.Component {
 					<div className="date-output">
 					{
 						year &&
-						<p className="date-source">
-							{this.state.year_field} - {this.state.month_field} - {this.state.day_field}
-						</p>
+						<div className="date-source">
+							<p>{this.state.year_field} - {this.state.month_field} - {this.state.day_field}</p>
+						</div>
 					}
 					{
 						year &&
