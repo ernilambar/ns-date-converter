@@ -21,7 +21,7 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 
 		if ( isset( $_POST['btn_cte'] ) ) {
 			// BS to AD.
-			$ad_date = $nd_object->bs_to_ad( absint( $_POST['np_year'] ), absint( $_POST['np_month'] ), absint( $_POST['np_day'] ) );
+			$ad_date = $nd_object->convertBsToAd( absint( $_POST['np_year'] ), absint( $_POST['np_month'] ), absint( $_POST['np_day'] ) );
 			if ( is_array( $ad_date ) && ! empty( $ad_date ) ) {
 				$value['np_year']  = absint( $_POST['np_year'] );
 				$value['np_month'] = absint( $_POST['np_month'] );
@@ -32,7 +32,7 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 			}
 		} else {
 			// AD to BS.
-			$bs_date = $nd_object->ad_to_bs( absint( $_POST['en_year'] ), absint( $_POST['en_month'] ), absint( $_POST['en_day'] ) );
+			$bs_date = $nd_object->convertAdToBs( absint( $_POST['en_year'] ), absint( $_POST['en_month'] ), absint( $_POST['en_day'] ) );
 			if ( is_array( $bs_date ) && ! empty( $bs_date ) ) {
 				$value['np_year']  = absint( $bs_date['year'] );
 				$value['np_month'] = absint( $bs_date['month'] );
@@ -49,7 +49,7 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 	// Show today date.
 	$today = explode( '-', date( 'Y-m-d' ) );
 
-	$new_date = $nd_object->ad_to_bs( $today[0], $today[1], $today[2] );
+	$new_date = $nd_object->convertAdToBs( $today[0], $today[1], $today[2] );
 
 	if ( is_array( $new_date ) && ! empty( $new_date ) ) {
 		$value['np_year']  = absint( $new_date['year'] );
@@ -61,61 +61,83 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 	}
 }
 ?>
+<div class="nsdc-wrap">
+	<form method="POST" action="" class="nsdc-form">
+		<?php wp_nonce_field( 'ns_date_converter', 'ndc_nonce' ); ?>
+		<div class="nsdc-row">
+			<?php
+			$args = array(
+				'name'     => 'np_year',
+				'selected' => $value['np_year'],
+			);
+			?>
+			<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'np' ) ); ?>
+			<?php
+			$args = array(
+				'name'     => 'np_month',
+				'selected' => $value['np_month'],
+			);
+			?>
+			<label>Month</label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'np' ) ); ?>
 
-<form method="POST" action="" class="nsdc-form">
-	<?php wp_nonce_field( 'ns_date_converter', 'ndc_nonce' ); ?>
-	<div class="nsdc-row">
-		<?php
-		$args = array(
-			'name'     => 'np_year',
-			'selected' => $value['np_year'],
-		);
-		?>
-		<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'np' ) ); ?>
-		<?php
-		$args = array(
-			'name'     => 'np_month',
-			'selected' => $value['np_month'],
-		);
-		?>
-		<label>Month</label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'np' ) ); ?>
+			<?php
+			$args = array(
+				'name'     => 'np_day',
+				'selected' => $value['np_day'],
+			);
+			?>
+			<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'np' ) ); ?>
 
-		<?php
-		$args = array(
-			'name'     => 'np_day',
-			'selected' => $value['np_day'],
-		);
-		?>
-		<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'np' ) ); ?>
+			<input type="submit" name="btn_cte" id="btn_cte" value="Convert to English" class="btn"/>
+		</div><!-- .nsdc-row -->
 
-		<input type="submit" name="btn_cte" id="btn_cte" value="Convert to English" class="btn"/>
-	</div><!-- .nsdc-row -->
+		<div class="nsdc-row">
+			<?php
+			$args = array(
+				'name'     => 'en_year',
+				'selected' => $value['en_year'],
+			);
+			?>
+			<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'en' ) ); ?>
+			<?php
+			$args = array(
+				'name'     => 'en_month',
+				'selected' => $value['en_month'],
+			);
+			?>
+			<label>Month</label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'en' ) ); ?>
 
-	<div class="nsdc-row">
-		<?php
-		$args = array(
-			'name'     => 'en_year',
-			'selected' => $value['en_year'],
-		);
-		?>
-		<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'en' ) ); ?>
-		<?php
-		$args = array(
-			'name'     => 'en_month',
-			'selected' => $value['en_month'],
-		);
-		?>
-		<label>Month</label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'en' ) ); ?>
+			<?php
+			$args = array(
+				'name'     => 'en_day',
+				'selected' => $value['en_day'],
+			);
+			?>
+			<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'en' ) ); ?>
 
-		<?php
-		$args = array(
-			'name'     => 'en_day',
-			'selected' => $value['en_day'],
-		);
-		?>
-		<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'en' ) ); ?>
+			<input type="hidden" name="frm_submitted" value="1" />
+			<input type="submit" name="btn_ctn" id="btn_ctn" value="Convert to Nepali" class="btn"/>
+		</div><!-- .nsdc-row -->
+	</form><!-- .nsdc-form -->
 
-		<input type="hidden" name="frm_submitted" value="1" />
-		<input type="submit" name="btn_ctn" id="btn_ctn" value="Convert to Nepali" class="btn"/>
-	</div><!-- .nsdc-row -->
-</form><!-- .nsdc-form -->
+	<?php if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] ) ) : ?>
+
+		<div class="nsdc-billboard">
+
+			<?php
+			$details_np = $nd_object->getDetails( $value['np_year'], $value['np_month'], $value['np_day'], 'bs' );
+			$np_formatted = $nd_object->getFormattedDate( $details_np, 'Y F d, l' );
+			// nspre( $f );
+
+			?>
+
+			<?php if ( ! empty( $np_formatted )  ) : ?>
+				<div class="np-date">
+					<?php echo esc_html( $np_formatted ); ?>
+				</div>
+
+			 <?php endif; ?>
+		</div><!-- .nsdc-billboard -->
+	<?php endif; ?>
+
+</div><!-- .nsdc-wrap -->
