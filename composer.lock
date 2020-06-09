@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6bbba432b5da2461b9ead3cc8476301",
+    "content-hash": "aeeb6c8861f0495ecc5b3ac6f704e57d",
     "packages": [
         {
             "name": "ernilambar/nepali-date",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ernilambar/nepali-date.git",
-                "reference": "83d671a2e1847f0dcb1d5b7de1b3d9d59b5de83d"
+                "reference": "120beb7cbc90523d204246e58b20f1d83afccb42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ernilambar/nepali-date/zipball/83d671a2e1847f0dcb1d5b7de1b3d9d59b5de83d",
-                "reference": "83d671a2e1847f0dcb1d5b7de1b3d9d59b5de83d",
+                "url": "https://api.github.com/repos/ernilambar/nepali-date/zipball/120beb7cbc90523d204246e58b20f1d83afccb42",
+                "reference": "120beb7cbc90523d204246e58b20f1d83afccb42",
                 "shasum": ""
             },
             "require": {
@@ -29,7 +29,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "ErNilambar\\NepaliDate\\": "src/"
+                    "Nilambar\\NepaliDate\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -49,7 +49,7 @@
             "keywords": [
                 "date"
             ],
-            "time": "2020-06-09T09:20:21+00:00"
+            "time": "2020-06-09T10:42:07+00:00"
         }
     ],
     "packages-dev": [],

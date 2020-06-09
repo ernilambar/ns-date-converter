@@ -7,14 +7,14 @@ namespace Composer\Autoload;
 class ComposerStaticInit7084720d89a86f52d8a62a8425a4b058
 {
     public static $prefixLengthsPsr4 = array (
-        'E' => 
+        'N' => 
         array (
-            'ErNilambar\\NepaliDate\\' => 22,
+            'Nilambar\\NepaliDate\\' => 20,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'ErNilambar\\NepaliDate\\' => 
+        'Nilambar\\NepaliDate\\' => 
         array (
             0 => __DIR__ . '/..' . '/ernilambar/nepali-date/src',
         ),
