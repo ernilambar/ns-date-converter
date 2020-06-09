@@ -1,9 +1,72 @@
 <?php
 
+function ndc_get_year_options( $type = 'en' ) {
+    $start = ($type == 'np') ? 2000 : 1944;
+    $end = ($type == 'np') ? 2089 : 2033;
+
+    $output = array();
+
+    for ($year = $start; $year <= $end; $year++) {
+        $output[$year] = $year;
+    }
+
+    return $output;
+}
+
+
+/**
+ * Render select dropdown.
+ *
+ * @since 0.1
+ *
+ * @param array  $main_args     Main arguments.
+ * @param string $callback      Callback method.
+ * @param array  $callback_args Callback arguments.
+ * @return string Rendered markup.
+ */
+function ndc_render_select_dropdown( $main_args, $callback, $callback_args = array() ) {
+	$defaults = array(
+		'id'       => '',
+		'name'     => '',
+		'selected' => 0,
+		'echo'     => true,
+	);
+
+	$r = wp_parse_args( $main_args, $defaults );
+
+	$output = '';
+
+	$choices = array();
+
+	if ( is_callable( $callback ) ) {
+		$choices = call_user_func_array( $callback, $callback_args );
+	}
+
+	if ( ! empty( $choices ) ) {
+
+		$output = "<select name='" . esc_attr( $r['name'] ) . "' id='" . esc_attr( $r['id'] ) . "'>\n";
+
+		if ( ! empty( $choices ) ) {
+			foreach ( $choices as $key => $choice ) {
+				$output .= '<option value="' . esc_attr( $key ) . '" ';
+				$output .= selected( $r['selected'], $key, false );
+				$output .= '>' . esc_html( $choice ) . '</option>\n';
+			}
+		}
+		$output .= "</select>\n";
+	}
+
+	if ( $r['echo'] ) {
+		echo $output;
+	}
+
+	return $output;
+}
+
 function getYearList($ytype, $yearname, $sel = '')
 {
-    $start = ($ytype == 'NP') ? 2000 : 1944;
-    $end = ($ytype == 'NP') ? 2089 : 2033;
+    $start = ($ytype == 'np') ? 2000 : 1944;
+    $end = ($ytype == 'np') ? 2089 : 2033;
     echo '<select class="form-control"  name="' . $yearname . '" id="' . $yearname . '">';
     for ($year = $start; $year <= $end; $year++)
     {
