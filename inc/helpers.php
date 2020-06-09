@@ -13,6 +13,33 @@ function ndc_get_year_options( $type = 'en' ) {
     return $output;
 }
 
+function ndc_get_month_options( $type = 'en' ) {
+	$months_np = array('Baishakh', 'Jeth', 'Ashar', 'Shrawan', 'Bhadra', 'Ashoj', 'Kartik', 'Mangshir', 'Poush', 'Magh', 'Falgun', 'Chaitra');
+	$months_en = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+
+	$list = ( 'en' == $type ) ? $months_en : $months_np;
+
+    $output = array();
+
+    for ($i = 1; $i <= 12; $i++) {
+        $output[$i] = $list[ $i - 1 ];
+    }
+
+    return $output;
+}
+
+function ndc_get_day_options( $type = 'en' ) {
+	$max = ( 'en' === $type ) ? 31 : 32;
+
+	$output = array();
+
+	for ($i = 1; $i <= $max; $i++) {
+	    $output[$i] = $i;
+	}
+
+	return $output;
+}
+
 
 /**
  * Render select dropdown.
@@ -50,10 +77,10 @@ function ndc_render_select_dropdown( $main_args, $callback, $callback_args = arr
 			foreach ( $choices as $key => $choice ) {
 				$output .= '<option value="' . esc_attr( $key ) . '" ';
 				$output .= selected( $r['selected'], $key, false );
-				$output .= '>' . esc_html( $choice ) . '</option>\n';
+				$output .= '>' . esc_html( $choice ) . '</option>';
 			}
 		}
-		$output .= "</select>\n";
+		$output .= "</select>";
 	}
 
 	if ( $r['echo'] ) {
@@ -63,24 +90,6 @@ function ndc_render_select_dropdown( $main_args, $callback, $callback_args = arr
 	return $output;
 }
 
-function getYearList($ytype, $yearname, $sel = '')
-{
-    $start = ($ytype == 'np') ? 2000 : 1944;
-    $end = ($ytype == 'np') ? 2089 : 2033;
-    echo '<select class="form-control"  name="' . $yearname . '" id="' . $yearname . '">';
-    for ($year = $start; $year <= $end; $year++)
-    {
-        echo '<option';
-        if ($sel != '' and $year == $sel)
-        {
-            echo ' selected="selected" ';
-        }
-        echo '>';
-        echo $year;
-        echo '</option>';
-    }
-    echo '</select>';
-}
 
 function getMonthName($mon)
 {

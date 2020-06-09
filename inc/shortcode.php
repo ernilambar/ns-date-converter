@@ -2,24 +2,48 @@
 	<div class="ns-row">
 		<?php
 		$args = array(
-			'name' => 'nepyear',
+			'name' => 'np_year',
 		);
 		?>
 		<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'np' ) ); ?>
-		<label>Month</label><?php getMonthList('nepmon', $month_n, 'NP') ?>
-		<label>Day</label><?php getDayList(32, 'nepday', $day_n); ?>
-		<input type="submit" name="nep_submit" id="nep_submit" value="Convert to English"  class="btn btn-primary"/>
-	</div><!-- .ns-row -->
-	<div class="ns-row">
+		<?php
+		$args = array(
+			'name' => 'np_month',
+		);
+		?>
+		<label>Month</label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'np' ) ); ?>
 
 		<?php
 		$args = array(
-			'name' => 'engyear',
+			'name' => 'np_day',
+		);
+		?>
+		<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'np' ) ); ?>
+
+		<input type="submit" name="btn_cte" id="btn_cte" value="Convert to English" class="btn"/>
+	</div><!-- .ns-row -->
+
+	<div class="ns-row">
+		<?php
+		$args = array(
+			'name' => 'en_year',
 		);
 		?>
 		<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'en' ) ); ?>
-		<label>Month</label><?php getMonthList('engmon', $month, 'EN') ?>
-		<label>Day</label><?php getDayList(31, 'engday', $day) ?>
-		<input type="submit" name="eng_submit" id="eng_submit" value="Convert to Nepali"  class="btn btn-primary"/>
+		<?php
+		$args = array(
+			'name' => 'en_month',
+		);
+		?>
+		<label>Month</label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'en' ) ); ?>
+
+		<?php
+		$args = array(
+			'name' => 'en_day',
+		);
+		?>
+		<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'en' ) ); ?>
+
+		<input type="submit" name="btn_ctn" id="btn_ctn" value="Convert to Nepali" class="btn"/>
 	</div><!-- .ns-row -->
 </form>
