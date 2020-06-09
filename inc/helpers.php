@@ -22,7 +22,7 @@ function ndc_get_month_options( $type = 'en' ) {
     $output = array();
 
     for ($i = 1; $i <= 12; $i++) {
-        $output[$i] = $list[ $i - 1 ];
+        $output[$i] = $i . ' - ' . $list[ $i - 1 ];
     }
 
     return $output;
