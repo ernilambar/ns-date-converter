@@ -1,6 +1,6 @@
 {
   "name": "ns-date-converter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NS Date Converter",
   "main_file": "ns-date-converter.php",
   "main": "Gruntfile.js",

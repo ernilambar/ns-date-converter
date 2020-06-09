@@ -3,11 +3,11 @@
  * Plugin Name: NS Date Converter
  * Plugin URI:
  * Description: Provides shortcode for Nepali to English date converter. Shortcode: [ns_date_converter].
- * Version: 1.0
+ * Version: 1.0.1
  * Author: Nilambar Sharma
  * Author URI: http://nilambar.net
  * Requires at least: 4.3
- * Tested up to: 4.5
+ * Tested up to: 5.4
  * License: GPLv3
  * Text Domain: ns-date-converter
  */
