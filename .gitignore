@@ -9,7 +9,6 @@ project.properties
 
 # Grunt
 /node_modules/
-/vendor/
 /deploy/
 
 # Docs
@@ -23,6 +22,3 @@ project.properties
 
 # Windows junk
 Thumbs.db
-
-# Theme specific
-test.php

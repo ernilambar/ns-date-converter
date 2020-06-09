@@ -67,7 +67,7 @@ function getDayList($max, $monthname, $cur = '')
 
 function crossCheck($y, $m, $d)
 {
-    //takes nepali date	
+    //takes nepali date
     $objC = new Nepali_Calendar();
     $engdate = $objC->nep_to_eng($y, $m, $d);
     $eyear = $engdate['year'];
@@ -81,58 +81,4 @@ function crossCheck($y, $m, $d)
     if ($y == $new_year && $m == $new_month && $d == $new_day)
         return true;
     return false;
-}
-
-/**
- * showpre
- *
- * Displays formatted output
- * 
- * @author Nilambar Sharma <nilambar@outlook.com>
- * @copyright Copyright (c) 2013, Nilambar Sharma
- * @version 1.0
- *
- * @param mixed $str What do you want to display
- * @param string $title Title 
- * @param bool $die Enable/disable die
- * @param bool $style   Enable/disable styling
- * @param bool $html Encoded html content
- * @return null
- * 
- * @todo Make more advanced
- */
-function showpre($str, $title = '', $die = false, $style = true, $html = false)
-{
-    $o = '<pre';
-    if ($style)
-        $o.=' style="
-		border:1px solid red; background-color:#eee;margin:3px;height:auto; margin-left:3%; 
-		overflow:hidden; width:94%;padding:5px; color:#000; text-align:left;
-		white-space: pre-wrap;
-		white-space: -moz-pre-wrap !important;
-		word-wrap: break-word;
-		white-space: -o-pre-wrap;
-		white-space: -pre-wrap;"';
-    $o.='>';
-    if ($title != '')
-    {
-        $o.= '<p';
-        if ($style)
-            $o.= '  style="border-bottom:1px solid red; color:#f00;font-weight:bold;padding:2px; margin:0px; text-align:left;"';
-        $o.= '>' . $title . '</p>';
-    }
-    if (!$html)
-    {
-        $o.= print_r($str, true);
-    }
-    else
-    {
-        $o.= print_r(htmlentities($str), true);
-    }
-
-    $o.='</pre>';
-    echo $o;
-    if ($die)
-        die;
-    return;
 }
