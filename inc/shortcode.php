@@ -2,9 +2,9 @@
 
 use ErNilambar\NepaliDate\NepaliDate;
 
-date_default_timezone_set('Asia/Katmandu');
+date_default_timezone_set( 'Asia/Katmandu' );
 
-
+$nd_object = new NepaliDate();
 
 $value = array(
 	'np_year'  => 0,
@@ -15,14 +15,43 @@ $value = array(
 	'en_day'   => 0,
 );
 
-$today = explode('-', date('Y-m-d'));
+if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] ) ) {
+	// Form is submitted.
+	if ( wp_verify_nonce( $_POST['ndc_nonce'], 'ns_date_converter' ) ) {
 
-$nd_object = new NepaliDate();
+		if ( isset( $_POST['btn_cte'] ) ) {
+			// BS to AD.
+			$ad_date = $nd_object->bs_to_ad( absint( $_POST['np_year'] ), absint( $_POST['np_month'] ), absint( $_POST['np_day'] ) );
+			if ( is_array( $ad_date ) && ! empty( $ad_date ) ) {
+				$value['np_year']  = absint( $_POST['np_year'] );
+				$value['np_month'] = absint( $_POST['np_month'] );
+				$value['np_day']   = absint( $_POST['np_day'] );
+				$value['en_year']  = absint( $ad_date['year'] );
+				$value['en_month'] = absint( $ad_date['month'] );
+				$value['en_day']   = absint( $ad_date['day'] );
+			}
+		} else {
+			// AD to BS.
+			$bs_date = $nd_object->ad_to_bs( absint( $_POST['en_year'] ), absint( $_POST['en_month'] ), absint( $_POST['en_day'] ) );
+			if ( is_array( $bs_date ) && ! empty( $bs_date ) ) {
+				$value['np_year']  = absint( $bs_date['year'] );
+				$value['np_month'] = absint( $bs_date['month'] );
+				$value['np_day']   = absint( $bs_date['day'] );
+				$value['en_year']  = absint( $_POST['en_year'] );
+				$value['en_month'] = absint( $_POST['en_month'] );
+				$value['en_day']   = absint( $_POST['en_day'] );
+			}
 
-try {
+		}
+
+	}
+} else {
+	// Show today date.
+	$today = explode( '-', date( 'Y-m-d' ) );
+
 	$new_date = $nd_object->ad_to_bs( $today[0], $today[1], $today[2] );
 
-	if ( ! empty( $new_date ) ) {
+	if ( is_array( $new_date ) && ! empty( $new_date ) ) {
 		$value['np_year']  = absint( $new_date['year'] );
 		$value['np_month'] = absint( $new_date['month'] );
 		$value['np_day']   = absint( $new_date['day'] );
@@ -31,23 +60,21 @@ try {
 		$value['en_day']   = absint( $today[2] );
 	}
 }
-catch( Exception $e) {
-}
 ?>
 
-<form method="POST" action="" class="ns-dc-form">
+<form method="POST" action="" class="nsdc-form">
 	<?php wp_nonce_field( 'ns_date_converter', 'ndc_nonce' ); ?>
-	<div class="ns-row">
+	<div class="nsdc-row">
 		<?php
 		$args = array(
-			'name' => 'np_year',
+			'name'     => 'np_year',
 			'selected' => $value['np_year'],
 		);
 		?>
 		<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'np' ) ); ?>
 		<?php
 		$args = array(
-			'name' => 'np_month',
+			'name'     => 'np_month',
 			'selected' => $value['np_month'],
 		);
 		?>
@@ -55,26 +82,26 @@ catch( Exception $e) {
 
 		<?php
 		$args = array(
-			'name' => 'np_day',
+			'name'     => 'np_day',
 			'selected' => $value['np_day'],
 		);
 		?>
 		<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'np' ) ); ?>
 
 		<input type="submit" name="btn_cte" id="btn_cte" value="Convert to English" class="btn"/>
-	</div><!-- .ns-row -->
+	</div><!-- .nsdc-row -->
 
-	<div class="ns-row">
+	<div class="nsdc-row">
 		<?php
 		$args = array(
-			'name' => 'en_year',
+			'name'     => 'en_year',
 			'selected' => $value['en_year'],
 		);
 		?>
 		<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'en' ) ); ?>
 		<?php
 		$args = array(
-			'name' => 'en_month',
+			'name'     => 'en_month',
 			'selected' => $value['en_month'],
 		);
 		?>
@@ -82,12 +109,13 @@ catch( Exception $e) {
 
 		<?php
 		$args = array(
-			'name' => 'en_day',
+			'name'     => 'en_day',
 			'selected' => $value['en_day'],
 		);
 		?>
 		<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'en' ) ); ?>
 
+		<input type="hidden" name="frm_submitted" value="1" />
 		<input type="submit" name="btn_ctn" id="btn_ctn" value="Convert to Nepali" class="btn"/>
-	</div><!-- .ns-row -->
-</form>
+	</div><!-- .nsdc-row -->
+</form><!-- .nsdc-form -->

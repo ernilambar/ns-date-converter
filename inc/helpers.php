@@ -1,31 +1,31 @@
 <?php
 
 function ndc_get_year_options( $type = 'en' ) {
-    $start = ($type == 'np') ? 2000 : 1944;
-    $end = ($type == 'np') ? 2089 : 2033;
+	$start = ( $type == 'np' ) ? 2000 : 1944;
+	$end   = ( $type == 'np' ) ? 2089 : 2033;
 
-    $output = array();
+	$output = array();
 
-    for ($year = $start; $year <= $end; $year++) {
-        $output[$year] = $year;
-    }
+	for ( $year = $start; $year <= $end; $year++ ) {
+		$output[ $year ] = $year;
+	}
 
-    return $output;
+	return $output;
 }
 
 function ndc_get_month_options( $type = 'en' ) {
-	$months_np = array('Baishakh', 'Jeth', 'Ashar', 'Shrawan', 'Bhadra', 'Ashoj', 'Kartik', 'Mangshir', 'Poush', 'Magh', 'Falgun', 'Chaitra');
-	$months_en = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+	$months_np = array( 'Baishakh', 'Jeth', 'Ashar', 'Shrawan', 'Bhadra', 'Ashoj', 'Kartik', 'Mangshir', 'Poush', 'Magh', 'Falgun', 'Chaitra' );
+	$months_en = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
 
 	$list = ( 'en' == $type ) ? $months_en : $months_np;
 
-    $output = array();
+	$output = array();
 
-    for ($i = 1; $i <= 12; $i++) {
-        $output[$i] = $i . ' - ' . $list[ $i - 1 ];
-    }
+	for ( $i = 1; $i <= 12; $i++ ) {
+		$output[ $i ] = $i . ' - ' . $list[ $i - 1 ];
+	}
 
-    return $output;
+	return $output;
 }
 
 function ndc_get_day_options( $type = 'en' ) {
@@ -33,8 +33,8 @@ function ndc_get_day_options( $type = 'en' ) {
 
 	$output = array();
 
-	for ($i = 1; $i <= $max; $i++) {
-	    $output[$i] = $i;
+	for ( $i = 1; $i <= $max; $i++ ) {
+		$output[ $i ] = $i;
 	}
 
 	return $output;
@@ -80,7 +80,7 @@ function ndc_render_select_dropdown( $main_args, $callback, $callback_args = arr
 				$output .= '>' . esc_html( $choice ) . '</option>';
 			}
 		}
-		$output .= "</select>";
+		$output .= '</select>';
 	}
 
 	if ( $r['echo'] ) {
@@ -90,67 +90,19 @@ function ndc_render_select_dropdown( $main_args, $callback, $callback_args = arr
 	return $output;
 }
 
-
-function getMonthName($mon)
-{
-    $arr_np = array('Baishakh', 'Jeth', 'Ashar', 'Shrawan', 'Bhadra', 'Ashoj', 'Kartik', 'Mangshir', 'Poush', 'Magh', 'Falgun', 'Chaitra');
-    return $arr_np[$mon-1];
-}
-
-function getMonthList($monthname, $cur = '', $lng = 'NP')
-{
-    $arr_np = array('Baishakh', 'Jeth', 'Ashar', 'Shrawan', 'Bhadra', 'Ashoj', 'Kartik', 'Mangshir', 'Poush', 'Magh', 'Falgun', 'Chaitra');
-    $arr_en = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
-    echo '<select class="form-control" name="' . $monthname . '" id="' . $monthname . '">';
-    for ($i = 1; $i <= 12; $i++)
-    {
-        echo '<option';
-        if ($cur != '' and $i == $cur)
-        {
-            echo ' selected="selected" ';
-        }
-        echo ' value="' . $i . '"';
-        echo '>';
-        if ($lng == 'EN')
-            echo $arr_en[$i - 1];
-        else
-            echo $arr_np[$i - 1];
-        echo '</option>';
-    }
-    echo '</select>';
-}
-
-function getDayList($max, $monthname, $cur = '')
-{
-    echo '<select  class="form-control" name="' . $monthname . '" id="' . $monthname . '">';
-    for ($i = 1; $i <= $max; $i++)
-    {
-        echo '<option';
-        if ($cur != '' and $i == $cur)
-        {
-            echo ' selected="selected" ';
-        }
-        echo '>';
-        echo $i;
-        echo '</option>';
-    }
-    echo '</select>';
-}
-
-function crossCheck($y, $m, $d)
-{
-    //takes nepali date
-    $objC = new Nepali_Calendar();
-    $engdate = $objC->nep_to_eng($y, $m, $d);
-    $eyear = $engdate['year'];
-    $emonth = $engdate['month'];
-    $eday = $engdate['date'];
-    //
-    $nepdate = $objC->eng_to_nep($eyear, $emonth, $eday);
-    $new_year = $nepdate['year'];
-    $new_month = $nepdate['month'];
-    $new_day = $nepdate['date'];
-    if ($y == $new_year && $m == $new_month && $d == $new_day)
-        return true;
-    return false;
+function crossCheck( $y, $m, $d ) {
+	// takes nepali date
+	$objC        = new Nepali_Calendar();
+	$engdate     = $objC->nep_to_eng( $y, $m, $d );
+	$eyear       = $engdate['year'];
+	$emonth      = $engdate['month'];
+	$eday        = $engdate['date'];
+		$nepdate = $objC->eng_to_nep( $eyear, $emonth, $eday );
+	$new_year    = $nepdate['year'];
+	$new_month   = $nepdate['month'];
+	$new_day     = $nepdate['date'];
+	if ( $y == $new_year && $m == $new_month && $d == $new_day ) {
+		return true;
+	}
+	return false;
 }
