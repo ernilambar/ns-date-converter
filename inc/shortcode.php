@@ -64,58 +64,80 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 	<form method="POST" action="" class="nsdc-form">
 		<?php wp_nonce_field( 'ns_date_converter', 'ndc_nonce' ); ?>
 		<div class="nsdc-row">
-			<?php
-			$args = array(
-				'name'     => 'np_year',
-				'selected' => $value['np_year'],
-			);
-			?>
-			<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'np' ) ); ?>
-			<?php
-			$args = array(
-				'name'     => 'np_month',
-				'selected' => $value['np_month'],
-			);
-			?>
-			<label>Month</label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'np' ) ); ?>
+			<div class="nsdc-selects">
+				<div class="nsdc-input">
+					<?php
+					$args = array(
+						'name'     => 'np_year',
+						'selected' => $value['np_year'],
+					);
+					?>
+					<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'np' ) ); ?>
+				</div><!-- .nsdc-input -->
 
-			<?php
-			$args = array(
-				'name'     => 'np_day',
-				'selected' => $value['np_day'],
-			);
-			?>
-			<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'np' ) ); ?>
+				<div class="nsdc-input">
+					<?php
+					$args = array(
+						'name'     => 'np_month',
+						'selected' => $value['np_month'],
+					);
+					?>
+					<label>Month</label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'np' ) ); ?>
+				</div>
 
-			<input type="submit" name="btn_cte" id="btn_cte" value="Convert to English" class="btn"/>
+				<div class="nsdc-input">
+					<?php
+					$args = array(
+						'name'     => 'np_day',
+						'selected' => $value['np_day'],
+					);
+					?>
+					<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'np' ) ); ?>
+				</div>
+			</div><!-- .nsdc-selects -->
+
+			<div class="nsdc-submit">
+				<input type="submit" name="btn_cte" id="btn_cte" value="Convert to English" class="btn"/>
+			</div><!-- .nsdc-submit -->
 		</div><!-- .nsdc-row -->
 
 		<div class="nsdc-row">
-			<?php
-			$args = array(
-				'name'     => 'en_year',
-				'selected' => $value['en_year'],
-			);
-			?>
-			<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'en' ) ); ?>
-			<?php
-			$args = array(
-				'name'     => 'en_month',
-				'selected' => $value['en_month'],
-			);
-			?>
-			<label>Month</label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'en' ) ); ?>
+			<div class="nsdc-selects">
+				<div class="nsdc-input">
+					<?php
+					$args = array(
+						'name'     => 'en_year',
+						'selected' => $value['en_year'],
+					);
+					?>
+					<label>Year</label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'en' ) ); ?>
+				</div>
 
-			<?php
-			$args = array(
-				'name'     => 'en_day',
-				'selected' => $value['en_day'],
-			);
-			?>
-			<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'en' ) ); ?>
+				<div class="nsdc-input">
+					<?php
+					$args = array(
+						'name'     => 'en_month',
+						'selected' => $value['en_month'],
+					);
+					?>
+					<label>Month</label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'en' ) ); ?>
+				</div>
 
-			<input type="hidden" name="frm_submitted" value="1" />
-			<input type="submit" name="btn_ctn" id="btn_ctn" value="Convert to Nepali" class="btn"/>
+				<div class="nsdc-input">
+					<?php
+					$args = array(
+						'name'     => 'en_day',
+						'selected' => $value['en_day'],
+					);
+					?>
+					<label>Day</label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'en' ) ); ?>
+				</div>
+			</div><!-- .nsdc-selects -->
+
+			<div class="nsdc-submit">
+				<input type="hidden" name="frm_submitted" value="1" />
+				<input type="submit" name="btn_ctn" id="btn_ctn" value="Convert to Nepali" class="btn"/>
+			</div>
 		</div><!-- .nsdc-row -->
 	</form><!-- .nsdc-form -->
 
@@ -150,3 +172,22 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 	<?php endif; ?>
 
 </div><!-- .nsdc-wrap -->
+
+<style>
+	.nsdc-wrap {
+		margin: 20px 0;
+	}
+	.nsdc-row {
+		display: flex;
+		margin-bottom: 15px;
+	}
+	.nsdc-input {
+		margin-right: 15px;
+	}
+	.nsdc-input label {
+		margin-right: 5px;
+	}
+	.nsdc-selects {
+		display: flex;
+	}
+</style>
