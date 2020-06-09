@@ -41,9 +41,7 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 				$value['en_month'] = absint( $_POST['en_month'] );
 				$value['en_day']   = absint( $_POST['en_day'] );
 			}
-
 		}
-
 	}
 } else {
 	// Show today date.
@@ -61,6 +59,7 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 	}
 }
 ?>
+
 <div class="nsdc-wrap">
 	<form method="POST" action="" class="nsdc-form">
 		<?php wp_nonce_field( 'ns_date_converter', 'ndc_nonce' ); ?>
@@ -123,20 +122,30 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 	<?php if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] ) ) : ?>
 
 		<div class="nsdc-billboard">
+			<div class="nsdc-billboard-inner">
+				<?php
+				$details_np   = $nd_object->getDetails( $value['np_year'], $value['np_month'], $value['np_day'], 'bs' );
+				$np_formatted = $nd_object->getFormattedDate( $details_np, 'Y F j, l' );
+				?>
 
-			<?php
-			$details_np = $nd_object->getDetails( $value['np_year'], $value['np_month'], $value['np_day'], 'bs' );
-			$np_formatted = $nd_object->getFormattedDate( $details_np, 'Y F d, l' );
-			// nspre( $f );
+				<?php if ( ! empty( $np_formatted ) ) : ?>
+					<div class="nsdc-board">
+						<h4 class="nsdc-board-heading">Nepali (BS)</h4>
+						<div class="nsdc-board-content">
+							<p><?php echo esc_html( $np_formatted ); ?></p>
+						</div><!-- .nsdc-board-content -->
+					</div>
+				<?php endif; ?>
 
-			?>
-
-			<?php if ( ! empty( $np_formatted )  ) : ?>
-				<div class="np-date">
-					<?php echo esc_html( $np_formatted ); ?>
+				<div class="date-area en-date">
+					<div class="nsdc-board">
+						<h4 class="nsdc-board-heading">English (AD)</h4>
+						<div class="nsdc-board-content">
+							<p><?php echo esc_html( date( 'Y F j, l', strtotime( $value['en_year'] . '-' . $value['en_month'] . '-' . $value['en_day'] ) ) ); ?></p>
+						</div><!-- .nsdc-board-content -->
+					</div>
 				</div>
-
-			 <?php endif; ?>
+			</div><!-- .nsdc-billboard-inner -->
 		</div><!-- .nsdc-billboard -->
 	<?php endif; ?>
 
