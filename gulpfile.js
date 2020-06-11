@@ -22,11 +22,9 @@ var browserSync = require('browser-sync').create();
 
 // Deploy files list.
 var deploy_files_list = [
-	'assets/**',
 	'inc/**',
 	'languages/**',
 	'vendor/**',
-	'README.md',
 	pkg.main_file
 ];
 
