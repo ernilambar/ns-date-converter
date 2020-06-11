@@ -18,7 +18,7 @@ $value = array(
 	'en_day'   => 0,
 );
 
-if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] ) ) {
+if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] ) ) { // phpcs:ignore WordPress.CSRF.NonceVerification
 	// Form is submitted.
 	if ( wp_verify_nonce( $_POST['ndc_nonce'], 'ns_date_converter' ) ) {
 
