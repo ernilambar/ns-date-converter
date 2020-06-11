@@ -1,8 +1,8 @@
 {
   "name": "ns-date-converter",
   "title": "NS Date Converter",
-  "version": "1.0.2",
-  "license": "MIT",
+  "version": "1.0.3",
+  "license": "GPL-2.0-or-later",
   "main_file": "ns-date-converter.php",
   "scripts": {
     "start": "gulp",

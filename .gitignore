@@ -7,8 +7,9 @@ project.properties
 .settings*
 .idea
 
-# Grunt
+# Folders
 /node_modules/
+/vendor/
 /deploy/
 
 # Docs
