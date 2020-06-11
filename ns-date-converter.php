@@ -10,6 +10,8 @@
  * Release Asset: true
  * License: GPL-2.0-or-later
  * Text Domain: ns-date-converter
+ *
+ * @package NS_Date_Converter
  */
 
 // Define.
@@ -19,7 +21,14 @@ define( 'NS_DATE_CONVERTER_URI', plugin_dir_url( __FILE__ ) );
 require_once NS_DATE_CONVERTER_DIR . '/vendor/autoload.php';
 require_once NS_DATE_CONVERTER_DIR . '/inc/helpers.php';
 
-function ns_date_converter_shortcode_callback( $atts ) {
+/**
+ * Register shortcode.
+ *
+ * @since 1.0.0
+ *
+ * @return string Shortcode output.
+ */
+function ns_date_converter_shortcode_callback() {
 	ob_start();
 
 	include_once NS_DATE_CONVERTER_DIR . '/inc/shortcode.php';

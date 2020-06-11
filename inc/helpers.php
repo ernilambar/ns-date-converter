@@ -1,8 +1,21 @@
 <?php
+/**
+ * Helpers
+ *
+ * @package NS_Nepali_Date
+ */
 
+/**
+ * Return year options.
+ *
+ * @since 1.0.0
+ *
+ * @param string $type Type.
+ * @return array Options.
+ */
 function ndc_get_year_options( $type = 'en' ) {
-	$start = ( $type == 'np' ) ? 2000 : 1944;
-	$end   = ( $type == 'np' ) ? 2089 : 2033;
+	$start = ( 'np' === $type ) ? 2000 : 1944;
+	$end   = ( 'np' === $type ) ? 2089 : 2033;
 
 	$output = array();
 
@@ -13,11 +26,19 @@ function ndc_get_year_options( $type = 'en' ) {
 	return $output;
 }
 
+/**
+ * Return month options.
+ *
+ * @since 1.0.0
+ *
+ * @param string $type Type.
+ * @return array Options.
+ */
 function ndc_get_month_options( $type = 'en' ) {
 	$months_np = array( 'Baishakh', 'Jeth', 'Ashar', 'Shrawan', 'Bhadra', 'Ashoj', 'Kartik', 'Mangshir', 'Poush', 'Magh', 'Falgun', 'Chaitra' );
 	$months_en = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
 
-	$list = ( 'en' == $type ) ? $months_en : $months_np;
+	$list = ( 'en' === $type ) ? $months_en : $months_np;
 
 	$output = array();
 
@@ -28,6 +49,14 @@ function ndc_get_month_options( $type = 'en' ) {
 	return $output;
 }
 
+/**
+ * Return day options.
+ *
+ * @since 1.0.0
+ *
+ * @param string $type Type.
+ * @return array Options.
+ */
 function ndc_get_day_options( $type = 'en' ) {
 	$max = ( 'en' === $type ) ? 31 : 32;
 
@@ -84,25 +113,8 @@ function ndc_render_select_dropdown( $main_args, $callback, $callback_args = arr
 	}
 
 	if ( $r['echo'] ) {
-		echo $output;
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	return $output;
-}
-
-function crossCheck( $y, $m, $d ) {
-	// takes nepali date
-	$objC        = new Nepali_Calendar();
-	$engdate     = $objC->nep_to_eng( $y, $m, $d );
-	$eyear       = $engdate['year'];
-	$emonth      = $engdate['month'];
-	$eday        = $engdate['date'];
-		$nepdate = $objC->eng_to_nep( $eyear, $emonth, $eday );
-	$new_year    = $nepdate['year'];
-	$new_month   = $nepdate['month'];
-	$new_day     = $nepdate['date'];
-	if ( $y == $new_year && $m == $new_month && $d == $new_day ) {
-		return true;
-	}
-	return false;
 }

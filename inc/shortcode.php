@@ -1,8 +1,11 @@
 <?php
+/**
+ * Shortcode
+ *
+ * @package NS_Nepali_Date
+ */
 
 use Nilambar\NepaliDate\NepaliDate;
-
-date_default_timezone_set( 'Asia/Katmandu' );
 
 $nd_object = new NepaliDate();
 
@@ -45,7 +48,7 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 	}
 } else {
 	// Show today date.
-	$today = explode( '-', date( 'Y-m-d' ) );
+	$today = explode( '-', gmdate( 'Y-m-d' ) );
 
 	$new_date = $nd_object->convertAdToBs( $today[0], $today[1], $today[2] );
 
@@ -183,7 +186,7 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 					<div class="nsdc-board">
 						<h4 class="nsdc-board-heading"><?php echo esc_html_e( 'English (AD):', 'ns-date-converter' ); ?></h4>
 						<div class="nsdc-board-content">
-							<p><?php echo esc_html( date( 'Y F j, l', strtotime( $value['en_year'] . '-' . $value['en_month'] . '-' . $value['en_day'] ) ) ); ?></p>
+							<p><?php echo esc_html( gmdate( 'Y F j, l', strtotime( $value['en_year'] . '-' . $value['en_month'] . '-' . $value['en_day'] ) ) ); ?></p>
 						</div><!-- .nsdc-board-content -->
 					</div>
 				</div>
