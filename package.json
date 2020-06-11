@@ -1,23 +1,28 @@
 {
-  "name": "ns-date-converter",
-  "title": "NS Date Converter",
-  "version": "1.0.3",
-  "license": "GPL-2.0-or-later",
-  "main_file": "ns-date-converter.php",
-  "scripts": {
-    "start": "gulp",
-    "build": "gulp build",
-    "deploy": "gulp deploy"
-  },
-  "repository": "github:ernilambar/ns-date-converter",
-  "devDependencies": {
-    "browser-sync": "^2.26.7",
-    "del": "^5.1.0",
-    "gulp": "^4.0.2",
-    "gulp-load-plugins": "^1.6.0",
-    "gulp-plumber": "^1.2.1",
-    "gulp-run": "^1.7.1",
-    "gulp-zip": "^5.0.1",
-    "node-wp-i18n": "^1.2.3"
-  }
+	"name": "ns-date-converter",
+	"title": "NS Date Converter",
+	"version": "1.0.3",
+	"license": "GPL-2.0-or-later",
+	"main_file": "ns-date-converter.php",
+	"scripts": {
+		"start": "gulp",
+		"build": "gulp build",
+		"deploy": "gulp deploy",
+		"install-all": "composer install && npm install",
+		"update-all": "composer update && npm update",
+		"deploy": "gulp deploy",
+		"release": "npm install && composer install --no-dev --no-scripts -o && npm run deploy"
+	},
+
+	"repository": "github:ernilambar/ns-date-converter",
+	"devDependencies": {
+		"browser-sync": "^2.26.7",
+		"del": "^5.1.0",
+		"gulp": "^4.0.2",
+		"gulp-load-plugins": "^1.6.0",
+		"gulp-plumber": "^1.2.1",
+		"gulp-run": "^1.7.1",
+		"gulp-zip": "^5.0.1",
+		"node-wp-i18n": "^1.2.3"
+	}
 }

@@ -11,12 +11,20 @@ class ComposerStaticInit7084720d89a86f52d8a62a8425a4b058
         array (
             'Nilambar\\NepaliDate\\' => 20,
         ),
+        'D' => 
+        array (
+            'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 55,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Nilambar\\NepaliDate\\' => 
         array (
             0 => __DIR__ . '/..' . '/ernilambar/nepali-date/src',
+        ),
+        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
         ),
     );
 
