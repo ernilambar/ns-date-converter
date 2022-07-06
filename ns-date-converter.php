@@ -6,8 +6,6 @@
  * Version: 1.0.4
  * Author: Nilambar Sharma
  * Author URI: https://www.nilambar.net/
- * GitHub Plugin URI: ernilambar/ns-date-converter
- * Release Asset: true
  * License: GPL-2.0-or-later
  * Text Domain: ns-date-converter
  *
