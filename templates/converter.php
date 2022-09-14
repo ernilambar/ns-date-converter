@@ -7,6 +7,8 @@
 
 use Nilambar\NepaliDate\NepaliDate;
 
+use NSDateConverter\Common\Helper;
+
 $nd_object = new NepaliDate();
 
 $value = array(
@@ -20,8 +22,7 @@ $value = array(
 
 if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] ) ) { // phpcs:ignore WordPress.CSRF.NonceVerification
 	// Form is submitted.
-	if ( wp_verify_nonce( $_POST['ndc_nonce'], 'ns_date_converter' ) ) {
-
+	if ( wp_verify_nonce( wp_unslash( $_POST['ndc_nonce'] ), 'ns_date_converter' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		if ( isset( $_POST['btn_cte'] ) ) {
 			// BS to AD.
 			$ad_date = $nd_object->convertBsToAd( absint( $_POST['np_year'] ), absint( $_POST['np_month'] ), absint( $_POST['np_day'] ) );
@@ -95,7 +96,8 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 						'selected' => $value['np_year'],
 					);
 					?>
-					<label><?php echo esc_html_e( 'Year', 'ns-date-converter' ); ?></label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'np' ) ); ?>
+					<label><?php esc_html_e( 'Year', 'ns-date-converter' ); ?></label>
+					<?php Helper::render_select_dropdown( $args, array( Helper::class, 'get_year_options' ), array( 'np' ) ); ?>
 				</div><!-- .nsdc-input -->
 
 				<div class="nsdc-input">
@@ -105,7 +107,8 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 						'selected' => $value['np_month'],
 					);
 					?>
-					<label><?php echo esc_html_e( 'Month', 'ns-date-converter' ); ?></label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'np' ) ); ?>
+					<label><?php esc_html_e( 'Month', 'ns-date-converter' ); ?></label>
+					<?php Helper::render_select_dropdown( $args, array( Helper::class, 'get_month_options' ), array( 'np' ) ); ?>
 				</div>
 
 				<div class="nsdc-input">
@@ -115,7 +118,8 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 						'selected' => $value['np_day'],
 					);
 					?>
-					<label><?php echo esc_html_e( 'Day', 'ns-date-converter' ); ?></label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'np' ) ); ?>
+					<label><?php esc_html_e( 'Day', 'ns-date-converter' ); ?></label>
+					<?php Helper::render_select_dropdown( $args, array( Helper::class, 'get_day_options' ), array( 'np' ) ); ?>
 				</div>
 			</div><!-- .nsdc-selects -->
 
@@ -133,7 +137,8 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 						'selected' => $value['en_year'],
 					);
 					?>
-					<label><?php echo esc_html_e( 'Year', 'ns-date-converter' ); ?></label><?php ndc_render_select_dropdown( $args, 'ndc_get_year_options', array( 'en' ) ); ?>
+					<label><?php esc_html_e( 'Year', 'ns-date-converter' ); ?></label>
+					<?php Helper::render_select_dropdown( $args, array( Helper::class, 'get_year_options' ), array( 'en' ) ); ?>
 				</div>
 
 				<div class="nsdc-input">
@@ -143,7 +148,8 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 						'selected' => $value['en_month'],
 					);
 					?>
-					<label><?php echo esc_html_e( 'Month', 'ns-date-converter' ); ?></label><?php ndc_render_select_dropdown( $args, 'ndc_get_month_options', array( 'en' ) ); ?>
+					<label><?php esc_html_e( 'Month', 'ns-date-converter' ); ?></label>
+					<?php Helper::render_select_dropdown( $args, array( Helper::class, 'get_month_options' ), array( 'en' ) ); ?>
 				</div>
 
 				<div class="nsdc-input">
@@ -153,7 +159,8 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 						'selected' => $value['en_day'],
 					);
 					?>
-					<label><?php echo esc_html_e( 'Day', 'ns-date-converter' ); ?></label><?php ndc_render_select_dropdown( $args, 'ndc_get_day_options', array( 'en' ) ); ?>
+					<label><?php esc_html_e( 'Day', 'ns-date-converter' ); ?></label>
+					<?php Helper::render_select_dropdown( $args, array( Helper::class, 'get_day_options' ), array( 'en' ) ); ?>
 				</div>
 			</div><!-- .nsdc-selects -->
 
@@ -175,7 +182,7 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 
 				<?php if ( ! empty( $np_formatted ) ) : ?>
 					<div class="nsdc-board">
-						<h4 class="nsdc-board-heading"><?php echo esc_html_e( 'Nepali (BS):', 'ns-date-converter' ); ?></h4>
+						<h4 class="nsdc-board-heading"><?php esc_html_e( 'Nepali (BS):', 'ns-date-converter' ); ?></h4>
 						<div class="nsdc-board-content">
 							<p><?php echo esc_html( $np_formatted ); ?></p>
 						</div><!-- .nsdc-board-content -->
@@ -184,7 +191,7 @@ if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] )
 
 				<div class="date-area en-date">
 					<div class="nsdc-board">
-						<h4 class="nsdc-board-heading"><?php echo esc_html_e( 'English (AD):', 'ns-date-converter' ); ?></h4>
+						<h4 class="nsdc-board-heading"><?php esc_html_e( 'English (AD):', 'ns-date-converter' ); ?></h4>
 						<div class="nsdc-board-content">
 							<p><?php echo esc_html( gmdate( 'Y F j, l', strtotime( $value['en_year'] . '-' . $value['en_month'] . '-' . $value['en_day'] ) ) ); ?></p>
 						</div><!-- .nsdc-board-content -->
