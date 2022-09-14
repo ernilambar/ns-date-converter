@@ -50,6 +50,5 @@ assets/
 build/
 deploy/
 docs/
-languages/
 node_modules/
 vendor/

@@ -8,33 +8,29 @@
  * Author URI: https://www.nilambar.net/
  * License: GPL-2.0-or-later
  * Text Domain: ns-date-converter
+ * GitHub Plugin URI: ernilambar/ns-date-converter
+ * Primary Branch: main
+ * Release Asset: true
  *
  * @package NS_Date_Converter
  */
 
-// Define.
+namespace NSDateConverter;
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 define( 'NS_DATE_CONVERTER_VERSION', '1.0.5' );
 define( 'NS_DATE_CONVERTER_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NS_DATE_CONVERTER_URI', plugin_dir_url( __FILE__ ) );
 
-require_once NS_DATE_CONVERTER_DIR . '/vendor/autoload.php';
-require_once NS_DATE_CONVERTER_DIR . '/inc/helpers.php';
-
-/**
- * Register shortcode.
- *
- * @since 1.0.0
- *
- * @return string Shortcode output.
- */
-function ns_date_converter_shortcode_callback() {
-	ob_start();
-
-	include NS_DATE_CONVERTER_DIR . '/inc/shortcode.php';
-
-	$output = ob_get_contents();
-	ob_end_clean();
-	return $output;
+// Include autoload.
+if ( file_exists( NS_DATE_CONVERTER_DIR . '/vendor/autoload.php' ) ) {
+	require_once NS_DATE_CONVERTER_DIR . '/vendor/autoload.php';
 }
 
-add_shortcode( 'ns_date_converter', 'ns_date_converter_shortcode_callback' );
+if ( class_exists( 'NSDateConverter\Init' ) ) {
+	\NSDateConverter\Init::register_services();
+}
