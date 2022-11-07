@@ -1,15 +1,15 @@
 {
   "name": "ns-date-converter",
   "title": "NS Date Converter",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "GPL-2.0-or-later",
   "main_file": "ns-date-converter.php",
   "repository": {
     "type": "git",
     "url": "https://github.com/ernilambar/ns-date-converter"
   },
+	"homepage": "https://github.com/ernilambar/ns-date-converter",
   "scripts": {
-    "dev": "gulp",
     "version": "easy-replace-in-files",
     "pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
     "textdomain": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
