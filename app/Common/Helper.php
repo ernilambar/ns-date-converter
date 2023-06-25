@@ -126,5 +126,4 @@ class Helper {
 
 		return $output;
 	}
-
 }

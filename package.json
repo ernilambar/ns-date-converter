@@ -1,27 +1,50 @@
 {
-  "name": "ns-date-converter",
-  "title": "NS Date Converter",
-  "version": "1.0.7",
-  "license": "GPL-2.0-or-later",
-  "main_file": "ns-date-converter.php",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ernilambar/ns-date-converter"
-  },
+	"name": "ns-date-converter",
+	"version": "1.0.8",
+	"title": "NS Date Converter",
+	"description": "NS Date Converter",
+	"author": "Nilambar Sharma",
+	"license": "GPL-2.0-or-later",
+	"main_file": "ns-date-converter.php",
+	"keywords": [
+		"wordpress",
+		"wordpress-plugin"
+	],
 	"homepage": "https://github.com/ernilambar/ns-date-converter",
-  "scripts": {
-    "version": "easy-replace-in-files",
-    "pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
-    "textdomain": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
-    "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
-    "deploy": "shx rm -rf deploy/ && shx mkdir deploy && copy-files-from-to && cd deploy/ && cross-var shx mv temp $npm_package_name && cross-var bestzip ../$npm_package_name.zip * && cd .. && cross-var shx mv $npm_package_name.zip deploy/"
-  },
-  "devDependencies": {
-    "bestzip": "^2.2.1",
-    "copy-files-from-to": "^3.2.2",
-    "cross-var": "^1.1.0",
-    "easy-replace-in-files": "^1.0.3",
-    "node-wp-i18n": "^1.2.6",
-    "shx": "^0.3.4"
-  }
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ernilambar/ns-date-converter.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ernilambar/ns-date-converter/issues"
+	},
+	"packtor": {
+		"files": [
+			"**/*",
+			"!*.js",
+			"!*.json",
+			"!*.lock",
+			"!*.yaml",
+			"!src/**/*",
+			"!vendor/yahnis-elsts/plugin-update-checker/languages/*"
+		]
+	},
+	"devDependencies": {
+		"bestzip": "^2.2.1",
+		"copy-files-from-to": "^3.9.0",
+		"cross-var": "^1.1.0",
+		"easy-replace-in-files": "^1.0.3",
+		"node-wp-i18n": "^1.2.7",
+		"packtor": "^1.0.2",
+		"shx": "^0.3.4"
+	},
+	"scripts": {
+		"prepare": "composer install",
+		"version": "easy-replace-in-files",
+		"pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
+		"td": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
+		"ready:vendor": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
+		"predeploy": "pnpm run ready:vendor",
+		"deploy": "packtor"
+	}
 }
