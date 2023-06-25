@@ -1,0 +1,19 @@
+.nsdc-row {
+
+	& + & {
+		margin-top: 20px;
+	}
+
+}
+
+.nsdc-inputs {
+	display: flex;
+	gap: 15px;
+}
+
+.nsdc-input {
+
+	select {
+		margin-left: 10px;
+	}
+}

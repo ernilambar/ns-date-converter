@@ -7,6 +7,8 @@
 
 namespace NSDateConverter\Common;
 
+use Nilambar\NepaliDate\NepaliDate;
+
 /**
  * Helper class.
  *
@@ -122,6 +124,86 @@ class Helper {
 
 		if ( $r['echo'] ) {
 			echo $output; // phpcs:ignore WordPress.Security.EscapeOutput
+		}
+
+		return $output;
+	}
+
+	public static function get_today_dates() {
+		$output = array();
+
+		$today = explode( '-', gmdate( 'Y-m-d' ) );
+
+		$nd_object = new NepaliDate();
+
+		$new_date = $nd_object->convertAdToBs( $today[0], $today[1], $today[2] );
+
+		if ( is_array( $new_date ) && ! empty( $new_date ) ) {
+			$output['np'] = array(
+				'year'  => absint( $new_date['year'] ),
+				'month' => absint( $new_date['month'] ),
+				'day'   => absint( $new_date['day'] ),
+			);
+
+			$output['en'] = array(
+				'year'  => absint( $today[0] ),
+				'month' => absint( $today[1] ),
+				'day'   => absint( $today[2] ),
+			);
+		}
+
+		return $output;
+	}
+
+	public static function get_converted_data( $to, $date ) {
+		$output = array();
+
+		$dt = explode( '-', $date );
+
+		$nd_object = new NepaliDate();
+
+		if ( 'np' === $to ) {
+			$new_date = $nd_object->convertAdToBs( $dt[0], $dt[1], $dt[2] );
+
+			if ( is_array( $new_date ) && ! empty( $new_date ) ) {
+				$details_np = $nd_object->getDetails( $new_date['year'], $new_date['month'], $new_date['day'], 'bs' );
+
+				$output['np'] = array(
+					'year'      => absint( $new_date['year'] ),
+					'month'     => absint( $new_date['month'] ),
+					'day'       => absint( $new_date['day'] ),
+					'formatted' => $nd_object->getFormattedDate( $details_np, 'Y F j, l' ),
+				);
+
+				$output['en'] = array(
+					'year'      => absint( $dt[0] ),
+					'month'     => absint( $dt[1] ),
+					'day'       => absint( $dt[2] ),
+					'formatted' => gmdate( 'Y F j, l', strtotime( $dt[0] . '-' . $dt[1] . '-' . $dt[2] ) ),
+				);
+			}
+		}
+		else if ( 'en' === $to ) {
+			$new_date = $nd_object->convertBsToAd( $dt[0], $dt[1], $dt[2] );
+			// var_dump( $new_date );
+
+			if ( is_array( $new_date ) && ! empty( $new_date ) ) {
+				$details_np = $nd_object->getDetails( $dt[0], $dt[1], $dt[2], 'bs' );
+
+				$output['en'] = array(
+					'year'      => absint( $new_date['year'] ),
+					'month'     => absint( $new_date['month'] ),
+					'day'       => absint( $new_date['day'] ),
+					'formatted' => gmdate( 'Y F j, l', strtotime( $new_date['year'] . '-' . $new_date['month'] . '-' . $new_date['day'] ) ),
+				);
+
+				$output['np'] = array(
+					'year'      => absint( $dt[0] ),
+					'month'     => absint( $dt[1] ),
+					'day'       => absint( $dt[2] ),
+					'formatted' => $nd_object->getFormattedDate( $details_np, 'Y F j, l' ),
+				);
+			}
 		}
 
 		return $output;
