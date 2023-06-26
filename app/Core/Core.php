@@ -43,7 +43,7 @@ class Core {
 	 * @since 1.0.0
 	 */
 	public function load_assets() {
-		$deps_file = NS_NEPALI_DATE_DIR . '/build/posts.asset.php';
+		$deps_file = NS_DATE_CONVERTER_DIR . '/build/index.asset.php';
 
 		$dependency = array();
 
@@ -65,8 +65,8 @@ class Core {
 			'days_en'     => Helper::get_day_options( 'en' ),
 		);
 
-		wp_enqueue_style( 'ns-date-converter-app', NS_DATE_CONVERTER_URI . '/build/index.css', array(), $version );
-		wp_enqueue_script( 'ns-date-converter-app', NS_DATE_CONVERTER_URI . '/build/index.js', $dependency, $version, true );
+		wp_enqueue_style( 'ns-date-converter-app', NS_DATE_CONVERTER_URL . '/build/index.css', array(), $version );
+		wp_enqueue_script( 'ns-date-converter-app', NS_DATE_CONVERTER_URL . '/build/index.js', $dependency, $version, true );
 		wp_localize_script( 'ns-date-converter-app', 'NSDC_APP', $data );
 	}
 

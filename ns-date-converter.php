@@ -24,8 +24,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'NS_DATE_CONVERTER_VERSION', '1.0.8' );
 define( 'NS_DATE_CONVERTER_SLUG', 'ns-date-converter' );
-define( 'NS_DATE_CONVERTER_DIR', plugin_dir_path( __FILE__ ) );
-define( 'NS_DATE_CONVERTER_URI', plugin_dir_url( __FILE__ ) );
+define( 'NS_DATE_CONVERTER_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
+define( 'NS_DATE_CONVERTER_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );
 
 // Include autoload.
 if ( file_exists( NS_DATE_CONVERTER_DIR . '/vendor/autoload.php' ) ) {
