@@ -40,7 +40,8 @@
 		"easy-replace-in-files": "^1.0.3",
 		"node-wp-i18n": "^1.2.7",
 		"packtor": "^1.0.2",
-		"shx": "^0.3.4"
+		"shx": "^0.3.4",
+		"spinno": "^1.0.3"
 	},
 	"scripts": {
 		"dev": "wp-scripts start",

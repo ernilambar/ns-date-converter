@@ -1,4 +1,5 @@
 import React from 'react';
+import { Spinno } from 'spinno';
 import Button from './components/Button';
 import { nsdcGetOptions } from './helpers/utils';
 import Select from './components/Select';
@@ -17,7 +18,7 @@ class App extends React.Component {
 			enYear: '',
 			enMonth: '',
 			enDay: '',
-			loading: true,
+			loading: false,
 			resultOpen: false,
 			resultSuccess: false,
 			errorboardOpen: false,
@@ -222,6 +223,7 @@ class App extends React.Component {
 						</div>
 					</div>
 				) }
+				{ this.state.loading && <Spinno /> }
 				{ this.state.resultOpen && (
 					<Result
 						success={ this.state.resultSuccess }
