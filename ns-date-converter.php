@@ -8,6 +8,7 @@
  * Author URI: https://www.nilambar.net/
  * License: GPL-2.0-or-later
  * Text Domain: ns-date-converter
+ * Domain Path: /languages
  * Requires PHP: 5.6
  * Requires at least: 4.9
  * Tested up to: 6.2
