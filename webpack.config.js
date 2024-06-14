@@ -4,7 +4,7 @@ const path = require( 'path' );
 
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config.js' );
 
-const BrowserSyncPlugin = require( 'browser-sync-webpack-plugin' );
+const BrowserSyncPlugin = require( 'browser-sync-v3-webpack-plugin' );
 
 module.exports = {
 	...defaultConfig,
@@ -15,7 +15,7 @@ module.exports = {
 		...defaultConfig.plugins,
 		new BrowserSyncPlugin( {
 			proxy: process.env.DEV_SERVER_URL,
-			open: false,
+			open: 'yes' === process.env.BROWSERSYNC_OPEN ? true : false,
 			files: [
 				{
 					match: [ '**/*.php' ],

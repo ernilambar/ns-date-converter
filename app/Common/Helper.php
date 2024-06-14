@@ -182,10 +182,8 @@ class Helper {
 					'formatted' => gmdate( 'Y F j, l', strtotime( $dt[0] . '-' . $dt[1] . '-' . $dt[2] ) ),
 				);
 			}
-		}
-		else if ( 'en' === $to ) {
+		} elseif ( 'en' === $to ) {
 			$new_date = $nd_object->convertBsToAd( $dt[0], $dt[1], $dt[2] );
-			// var_dump( $new_date );
 
 			if ( is_array( $new_date ) && ! empty( $new_date ) ) {
 				$details_np = $nd_object->getDetails( $dt[0], $dt[1], $dt[2], 'bs' );
