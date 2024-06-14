@@ -3,7 +3,7 @@
  * Plugin Name: NS Date Converter
  * Plugin URI: https://github.com/ernilambar/ns-date-converter/
  * Description: Provides shortcode for Nepali to English date converter. Shortcode: [ns_date_converter].
- * Version: 1.0.8
+ * Version: 1.0.9
  * Author: Nilambar Sharma
  * Author URI: https://www.nilambar.net/
  * License: GPL-2.0-or-later
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NS_DATE_CONVERTER_VERSION', '1.0.8' );
+define( 'NS_DATE_CONVERTER_VERSION', '1.0.9' );
 define( 'NS_DATE_CONVERTER_SLUG', 'ns-date-converter' );
 define( 'NS_DATE_CONVERTER_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
 define( 'NS_DATE_CONVERTER_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );

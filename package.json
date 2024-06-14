@@ -1,6 +1,6 @@
 {
 	"name": "ns-date-converter",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"title": "NS Date Converter",
 	"description": "NS Date Converter",
 	"author": "Nilambar Sharma",
@@ -50,7 +50,6 @@
 		"lint:json:fix": "wp-scripts format *.json",
 		"lint:pkg": "wp-scripts lint-pkg-json",
 		"fix": "pnpm run lint:js:fix && pnpm run lint:css:fix && pnpm run lint:json:fix",
-		"prepare": "composer install",
 		"version": "easy-replace-in-files",
 		"pot": "composer run-script pot",
 		"ready:vendor": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
