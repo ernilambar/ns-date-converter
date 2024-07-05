@@ -11,11 +11,12 @@
 		}
 	],
 	"require": {
-		"ernilambar/nepali-date": "^1",
+		"ernilambar/nepali-date": "^1.0",
 		"yahnis-elsts/plugin-update-checker": "^5.4"
 	},
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"slevomat/coding-standard": "^8.15",
 		"wp-cli/i18n-command": "^2.6",
 		"wp-coding-standards/wpcs": "3.1"
 	},
@@ -35,8 +36,6 @@
 		"sort-packages": true
 	},
 	"scripts": {
-		"pc:config": "@php ./vendor/bin/phpcs --config-show",
-		"pc:info": "@php ./vendor/bin/phpcs -i",
 		"phpcbf": "@php ./vendor/bin/phpcbf --report-full --report-summary .",
 		"phpcs": "@php ./vendor/bin/phpcs --report-full --report-summary .",
 		"pot": "wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"

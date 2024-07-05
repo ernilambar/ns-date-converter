@@ -18,6 +18,8 @@
 
 namespace NSDateConverter;
 
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -35,8 +37,8 @@ if ( file_exists( NS_DATE_CONVERTER_DIR . '/vendor/autoload.php' ) ) {
 }
 
 if ( class_exists( 'NSDateConverter\Init' ) ) {
-	\NSDateConverter\Init::register_services();
+	Init::register_services();
 }
 
-$nsdc_update_checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker( 'https://github.com/ernilambar/ns-date-converter', __FILE__, NS_DATE_CONVERTER_SLUG );
+$nsdc_update_checker = PucFactory::buildUpdateChecker( 'https://github.com/ernilambar/ns-date-converter', __FILE__, NS_DATE_CONVERTER_SLUG );
 $nsdc_update_checker->getVcsApi()->enableReleaseAssets();
