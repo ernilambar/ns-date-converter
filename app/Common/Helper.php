@@ -129,6 +129,13 @@ class Helper {
 		return $output;
 	}
 
+	/**
+	 * Return today date details.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array Date details.
+	 */
 	public static function get_today_dates() {
 		$output = array();
 
@@ -155,7 +162,16 @@ class Helper {
 		return $output;
 	}
 
-	public static function get_converted_data( $to, $date ) {
+	/**
+	 * Return converted date.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $to Target format.
+	 * @param array  $date Date to convert.
+	 * @return array Converted date details.
+	 */
+	public static function get_converted_date( $to, $date ) {
 		$output = array();
 
 		$dt = explode( '-', $date );

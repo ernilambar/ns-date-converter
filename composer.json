@@ -11,11 +11,13 @@
 		}
 	],
 	"require": {
+		"php": ">=8.0",
 		"ernilambar/nepali-date": "^1.0",
 		"yahnis-elsts/plugin-update-checker": "^5.4"
 	},
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
 		"slevomat/coding-standard": "^8.15",
 		"wp-cli/i18n-command": "^2.6",
 		"wp-coding-standards/wpcs": "3.1"
