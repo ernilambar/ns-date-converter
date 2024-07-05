@@ -26,7 +26,7 @@
 	<arg name="parallel" value="8"/><!-- Enables parallel processing when available for faster results. -->
 
 	<!-- Minimum support WP Version. -->
-	<config name="minimum_supported_wp_version" value="4.9"/>
+	<config name="minimum_supported_wp_version" value="6.3"/>
 
 	<!-- Don't worry about files that don't contain any code -->
 	<rule ref="Internal.NoCodeFound">
@@ -117,5 +117,5 @@
 	<rule ref="PHPCompatibilityWP" />
 
 	<!-- PHP version check. -->
-	<config name="testVersion" value="7.2-"/>
+	<config name="testVersion" value="8.0-"/>
 </ruleset>

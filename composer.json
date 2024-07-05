@@ -11,6 +11,7 @@
 		}
 	],
 	"require": {
+		"php": ">=8.0",
 		"ernilambar/nepali-date": "^1.0",
 		"yahnis-elsts/plugin-update-checker": "^5.4"
 	},

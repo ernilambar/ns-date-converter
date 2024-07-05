@@ -78,14 +78,14 @@ class Core {
 	public function get_converted_date_ajax_callback() {
 		$output = array();
 
-		$to    = ( isset( $_POST['to'] ) && 0 !== strlen( $_POST['to'] ) ) ? sanitize_text_field( $_POST['to'] ) : '';
+		$to    = ( isset( $_POST['to'] ) && 0 !== strlen( $_POST['to'] ) ) ? sanitize_text_field( $_POST['to'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		$year  = ( isset( $_POST['year'] ) && 0 !== absint( $_POST['year'] ) ) ? absint( $_POST['year'] ) : '';
 		$month = ( isset( $_POST['month'] ) && 0 !== absint( $_POST['month'] ) ) ? absint( $_POST['month'] ) : '';
 		$day   = ( isset( $_POST['day'] ) && 0 !== absint( $_POST['day'] ) ) ? absint( $_POST['day'] ) : '';
 
 		$date = array( $year, $month, $day );
 
-		$output = Helper::get_converted_data( $to, implode( '-', $date ) );
+		$output = Helper::get_converted_date( $to, implode( '-', $date ) );
 
 		if ( ! empty( $output ) ) {
 			wp_send_json_success( $output, 200 );
