@@ -37,24 +37,23 @@
 		"dotenv": "^16.4.5",
 		"easy-replace-in-files": "^1.0.3",
 		"packtor": "^1.0.2",
+		"prettier": "npm:wp-prettier@^3.0.3",
+		"rimraf": "^6.0.0",
 		"shx": "^0.3.4",
 		"spinno": "^1.0.3"
 	},
 	"scripts": {
 		"dev": "wp-scripts start",
 		"build": "wp-scripts build",
-		"lint:css": "wp-scripts lint-style 'src/**/*.{css,scss}'",
-		"lint:css:fix": "wp-scripts lint-style 'src/**/*.{css,scss}' --fix",
 		"lint:js": "wp-scripts lint-js ./src",
 		"lint:js:fix": "wp-scripts lint-js ./src --fix",
-		"lint:json:fix": "wp-scripts format *.json",
-		"lint:pkg": "wp-scripts lint-pkg-json",
-		"fix": "pnpm run lint:js:fix && pnpm run lint:css:fix && pnpm run lint:json:fix",
+		"lint-pkg-json": "wp-scripts lint-pkg-json",
+		"fix": "pnpm run lint:js:fix && pnpm run format",
+		"format": "prettier \"**/*.{css,json,scss}\" --write",
 		"version": "easy-replace-in-files",
 		"pot": "composer run-script pot",
-		"ready:vendor": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
-		"ready:build": "shx rm -rf build/ && pnpm run build",
-		"predeploy": "pnpm run ready:vendor && pnpm run ready:build",
+		"vendor": "composer install --no-dev --no-scripts -o",
+		"predeploy": "rimraf build deploy vendor && pnpm run vendor && pnpm run build",
 		"deploy": "packtor"
 	}
 }
