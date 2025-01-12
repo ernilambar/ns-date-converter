@@ -3,7 +3,7 @@
  * Plugin Name: NS Date Converter
  * Plugin URI: https://github.com/ernilambar/ns-date-converter/
  * Description: Provides shortcode for Nepali to English date converter. Shortcode: [ns_date_converter].
- * Version: 1.0.9
+ * Version: 1.0.10
  * Requires at least: 6.3
  * Requires PHP: 8.0
  * Author: Nilambar Sharma
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NS_DATE_CONVERTER_VERSION', '1.0.9' );
+define( 'NS_DATE_CONVERTER_VERSION', '1.0.10' );
 define( 'NS_DATE_CONVERTER_SLUG', 'ns-date-converter' );
 define( 'NS_DATE_CONVERTER_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
 define( 'NS_DATE_CONVERTER_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );

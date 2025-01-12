@@ -1,6 +1,6 @@
 {
 	"name": "ns-date-converter",
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"description": "NS Date Converter",
 	"author": "Nilambar Sharma",
 	"license": "GPL-2.0-or-later",
@@ -29,28 +29,22 @@
 			"!vendor/yahnis-elsts/plugin-update-checker/languages/*"
 		]
 	},
+	"npmpackagejsonlint": {
+		"extends": "@wordpress/npm-package-json-lint-config"
+	},
 	"devDependencies": {
-		"@wordpress/scripts": "27.9.0",
-		"browser-sync": "^3.0.2",
-		"browser-sync-v3-webpack-plugin": "^0.1.0",
-		"dotenv": "^16.4.5",
+		"@wordpress/npm-package-json-lint-config": "^5.15.0",
 		"easy-replace-in-files": "^1.0.3",
+		"npm-package-json-lint": "^8.0.0",
 		"packtor": "^1.0.2",
 		"prettier": "npm:wp-prettier@^3.0.3",
-		"rimraf": "^6.0.0",
-		"spinno": "^1.0.3"
+		"rimraf": "^6.0.1"
 	},
 	"scripts": {
-		"dev": "wp-scripts start",
-		"build": "wp-scripts build",
-		"lint:js": "wp-scripts lint-js ./src",
-		"lint:js:fix": "wp-scripts lint-js ./src --fix",
-		"lint-pkg-json": "wp-scripts lint-pkg-json",
-		"fix": "pnpm run lint:js:fix && pnpm run format",
-		"format": "prettier \"**/*.{css,json,scss}\" --write",
+		"lint-pkg-json": "npmPkgJsonLint .",
 		"version": "easy-replace-in-files",
 		"vendor": "composer install --no-dev --no-scripts -o",
-		"predeploy": "rimraf build deploy vendor && pnpm run vendor && pnpm run build",
+		"predeploy": "rimraf deploy vendor && pnpm run vendor",
 		"deploy": "packtor"
 	}
 }
