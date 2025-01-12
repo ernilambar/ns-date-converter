@@ -47,6 +47,8 @@ class Core {
 
 		$dependency = array();
 
+		$version = '1.0.0';
+
 		if ( file_exists( $deps_file ) ) {
 			$deps_file  = require $deps_file;
 			$dependency = $deps_file['dependencies'];

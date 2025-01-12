@@ -1,7 +1,6 @@
 {
 	"name": "ns-date-converter",
 	"version": "1.0.9",
-	"title": "NS Date Converter",
 	"description": "NS Date Converter",
 	"author": "Nilambar Sharma",
 	"license": "GPL-2.0-or-later",
@@ -50,7 +49,6 @@
 		"fix": "pnpm run lint:js:fix && pnpm run format",
 		"format": "prettier \"**/*.{css,json,scss}\" --write",
 		"version": "easy-replace-in-files",
-		"pot": "composer run-script pot",
 		"vendor": "composer install --no-dev --no-scripts -o",
 		"predeploy": "rimraf build deploy vendor && pnpm run vendor && pnpm run build",
 		"deploy": "packtor"
