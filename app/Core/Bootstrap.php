@@ -20,13 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class Bootstrap {
 
 	/**
-	 * Register all plugin services.
+	 * Initializes the plugin.
 	 *
 	 * @since 2.0.0
 	 */
-	public static function register_services(): void {
-		add_action( 'plugins_loaded', array( __CLASS__, 'load_textdomain' ) );
-		add_shortcode( 'ns_date_converter', array( __CLASS__, 'shortcode_callback' ) );
+	public function init(): void {
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+		add_shortcode( 'ns_date_converter', array( $this, 'shortcode_callback' ) );
 	}
 
 	/**
@@ -34,21 +34,21 @@ final class Bootstrap {
 	 *
 	 * @since 2.0.0
 	 */
-	public static function load_textdomain(): void {
-		load_plugin_textdomain( 'ns-date-converter' );
+	public function load_textdomain(): void {
+		load_plugin_textdomain( 'ns-date-converter', false, dirname( NS_DATE_CONVERTER_BASE_FILENAME ) . '/languages' );
 	}
 
 	/**
 	 * Shortcode callback.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 *
 	 * @return string Shortcode output.
 	 */
-	public static function shortcode_callback(): string {
+	public function shortcode_callback(): string {
 		ob_start();
 
-		require NS_DATE_CONVERTER_DIR . '/templates/converter.php';
+		require NS_DATE_CONVERTER_DIR . 'templates/converter.php';
 
 		return ob_get_clean();
 	}
