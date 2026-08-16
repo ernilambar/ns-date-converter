@@ -7,6 +7,11 @@
 
 namespace NSDateConverter\Core;
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Bootstrap class.
  *

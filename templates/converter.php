@@ -5,6 +5,11 @@
  * @package NS_Nepali_Date
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Nilambar\NepaliDate\NepaliDate;
 
 use NSDateConverter\Utils\Helper;
@@ -22,7 +27,7 @@ $value = array(
 
 if ( isset( $_POST['frm_submitted'] ) && 1 === absint( $_POST['frm_submitted'] ) ) { // phpcs:ignore WordPress.CSRF.NonceVerification
 	// Form is submitted.
-	if ( wp_verify_nonce( wp_unslash( $_POST['ndc_nonce'] ), 'ns_date_converter' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	if ( isset( $_POST['ndc_nonce'] ) && wp_verify_nonce( wp_unslash( $_POST['ndc_nonce'] ), 'ns_date_converter' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		if ( isset( $_POST['btn_cte'] ) ) {
 			// BS to AD.
 			$ad_date = $nd_object->convertBsToAd( absint( $_POST['np_year'] ), absint( $_POST['np_month'] ), absint( $_POST['np_day'] ) );
