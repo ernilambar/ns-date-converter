@@ -35,8 +35,8 @@ if ( file_exists( NS_DATE_CONVERTER_DIR . '/vendor/autoload.php' ) ) {
 	require_once NS_DATE_CONVERTER_DIR . '/vendor/ernilambar/gitvise/init.php';
 }
 
-if ( class_exists( 'NSDateConverter\Init' ) ) {
-	Init::register_services();
+if ( class_exists( 'NSDateConverter\Core\Bootstrap' ) ) {
+	Core\Bootstrap::register_services();
 }
 
 ( new Updater( 'ernilambar/ns-date-converter', __FILE__ ) )->init();
