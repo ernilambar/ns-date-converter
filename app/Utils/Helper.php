@@ -5,7 +5,7 @@
  * @package NS_Date_Converter
  */
 
-namespace NSDateConverter\Common;
+namespace NSDateConverter\Utils;
 
 use Nilambar\NepaliDate\NepaliDate;
 
