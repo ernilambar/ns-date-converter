@@ -37,6 +37,10 @@ No. All conversion happens locally using the bundled Nepali Date library.
 
 == Changelog ==
 
+= 2.0.0 - 2026-08-16 =
+* Restructure folders
+* WP 7.1 compatibility
+
 = 1.0.10 =
 * Updated plugin updater to use GitHub releases
 * Removed unused AJAX endpoint and asset loading

@@ -1,9 +1,11 @@
 {
 	"files": [
 		"app/**/*",
+		"languages/**/*",
 		"templates/**/*",
 		"src/**/*",
 		"vendor/**/*",
+		"composer.json",
 		"ns-date-converter.php",
 		"readme.txt",
 		"!**/*.bak"
