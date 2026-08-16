@@ -7,7 +7,7 @@
 
 use Nilambar\NepaliDate\NepaliDate;
 
-use NSDateConverter\Common\Helper;
+use NSDateConverter\Utils\Helper;
 
 $nd_object = new NepaliDate();
 

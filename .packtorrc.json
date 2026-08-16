@@ -1,0 +1,11 @@
+{
+	"files": [
+		"app/**/*",
+		"templates/**/*",
+		"src/**/*",
+		"vendor/**/*",
+		"ns-date-converter.php",
+		"readme.txt",
+		"!**/*.bak"
+	]
+}
