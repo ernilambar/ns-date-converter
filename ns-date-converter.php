@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NS Date Converter
  * Plugin URI: https://github.com/ernilambar/ns-date-converter/
- * Description: Provides shortcode for Nepali to English date converter. Shortcode: [ns_date_converter].
+ * Description: Provides shortcode for Nepali to English date converter.
  * Version: 2.0.0
  * Requires at least: 7.0
  * Requires PHP: 8.2
@@ -26,17 +26,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'NS_DATE_CONVERTER_VERSION', '2.0.0' );
 define( 'NS_DATE_CONVERTER_SLUG', 'ns-date-converter' );
-define( 'NS_DATE_CONVERTER_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
-define( 'NS_DATE_CONVERTER_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );
+define( 'NS_DATE_CONVERTER_BASE_FILEPATH', __FILE__ );
+define( 'NS_DATE_CONVERTER_BASE_FILENAME', plugin_basename( __FILE__ ) );
+define( 'NS_DATE_CONVERTER_DIR', plugin_dir_path( __FILE__ ) );
+define( 'NS_DATE_CONVERTER_URL', plugin_dir_url( __FILE__ ) );
 
 // Include autoload.
-if ( file_exists( NS_DATE_CONVERTER_DIR . '/vendor/autoload.php' ) ) {
-	require_once NS_DATE_CONVERTER_DIR . '/vendor/autoload.php';
-	require_once NS_DATE_CONVERTER_DIR . '/vendor/ernilambar/gitvise/init.php';
+if ( file_exists( NS_DATE_CONVERTER_DIR . 'vendor/autoload.php' ) ) {
+	require_once NS_DATE_CONVERTER_DIR . 'vendor/autoload.php';
+	require_once NS_DATE_CONVERTER_DIR . 'vendor/ernilambar/gitvise/init.php';
 }
 
 if ( class_exists( 'NSDateConverter\Core\Bootstrap' ) ) {
-	Core\Bootstrap::register_services();
+	( new Core\Bootstrap() )->init();
 }
 
-( new Updater( 'ernilambar/ns-date-converter', __FILE__ ) )->init();
+// Initialize updater.
+( new Updater( 'ernilambar/ns-date-converter', NS_DATE_CONVERTER_BASE_FILEPATH ) )->init();

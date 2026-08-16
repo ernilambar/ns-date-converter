@@ -25,6 +25,9 @@
 	<arg name="extensions" value="php"/>
 	<arg name="parallel" value="8"/><!-- Enables parallel processing when available for faster results. -->
 
+	<!-- For CI, don't fail on warnings -->
+	<config name="ignore_warnings_on_exit" value="1"/>
+
 	<!-- Minimum support WP Version. -->
 	<config name="minimum_supported_wp_version" value="7.0"/>
 
@@ -36,12 +39,8 @@
 		<severity>0</severity>
 	</rule>
 
-	<!-- For CI, don't fail on warnings -->
-	<config name="ignore_warnings_on_exit" value="1"/>
-
 	<!-- Include the WordPress rulesets. -->
 	<rule ref="WordPress">
-		<exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents"/>
 		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidated"/>
 	</rule>
 
@@ -104,13 +103,14 @@
 	<!-- All references to functions, classes and constants should import using a use statement. -->
 	<rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
 		<properties>
-		<property name="allowFullyQualifiedGlobalFunctions" value="true" />
-		<property name="allowFullyQualifiedGlobalClasses" value="true" />
-		<property name="allowFullyQualifiedGlobalConstants" value="true" />
-		<property name="allowFallbackGlobalFunctions" value="true" />
-		<property name="allowFallbackGlobalConstants" value="true" />
-		<property name="allowFullyQualifiedNameForCollidingClasses" value="true" />
-	</properties>
+			<property name="allowFallbackGlobalConstants" value="true" />
+			<property name="allowFallbackGlobalFunctions" value="true" />
+			<property name="allowFullyQualifiedExceptions" value="false" />
+			<property name="allowFullyQualifiedGlobalClasses" value="false" />
+			<property name="allowFullyQualifiedGlobalConstants" value="true" />
+			<property name="allowFullyQualifiedGlobalFunctions" value="true" />
+			<property name="allowFullyQualifiedNameForCollidingClasses" value="true" />
+		</properties>
 	</rule>
 
 	<!-- Loads the PHP Compatibility ruleset. -->
